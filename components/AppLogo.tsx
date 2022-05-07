@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    // marginTop: 90,
-    // marginBottom: 40,
+    marginTop: 90,
+    marginBottom: 40,
   },
   logo: { marginBottom: 12 },
   title: {
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 40,
     lineHeight: 60,
-    // marginBottom: 12,
+    marginBottom: 12,
   },
   subtitle: {
     color: '#717E95',

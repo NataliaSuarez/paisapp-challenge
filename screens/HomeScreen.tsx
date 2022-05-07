@@ -22,7 +22,7 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
         </View>
         {/* CARDS COMPONENT */}
         <View style={styles.cardsContainer}>
-          <ScrollView horizontal style={styles.scrollContainer}>
+          <ScrollView horizontal style={styles.scrollContainer} showsHorizontalScrollIndicator={false}>
             <Card />
             <Card />
             <Card />

@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React, { useContext } from 'react';
-import { ColorSchemeName } from 'react-native';
+import { ColorSchemeName, View } from 'react-native';
 import { AuthContext } from '../App';
 
 import Colors from '../constants/Colors';
@@ -89,51 +89,51 @@ function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
   return (
-    <BottomTab.Navigator
-      initialRouteName="Home"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
-      }}>
-      <BottomTab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: "Home piola",
+
+    <View style={{ flex: 1, backgroundColor: '#F9FAFC' }}>
+      <BottomTab.Navigator
+        initialRouteName="Home"
+        // sceneContainerStyle={{ backgroundColor: "#FFFFFF" }}
+        screenOptions={{
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          // headerRight: () => (
-          //   <Pressable
-          //     onPress={() => navigation.navigate('Modal')}
-          //     style={({ pressed }) => ({
-          //       opacity: pressed ? 0.5 : 1,
-          //     })}>
-          //     <FontAwesome
-          //       name="info-circle"
-          //       size={25}
-          //       color={Colors[colorScheme].text}
-          //       style={{ marginRight: 15 }}
-          //     />
-          //   </Pressable>
-          // ),
-        })}
-      />
-      <BottomTab.Screen
-        name="Contacts"
-        component={ContactsScreen}
-        options={{
-          title: 'Contacts',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Logout"
-        component={LogoutScreen}
-        options={{
-          title: 'Logout',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </BottomTab.Navigator>
+          tabBarActiveTintColor: "#6C8FF8",//Colors[colorScheme].tint,
+          tabBarInactiveTintColor: "#071529",//Colors[colorScheme].tint,
+          tabBarShowLabel: false,
+          tabBarHideOnKeyboard: true,
+          tabBarStyle: {
+            height: 86,
+            backgroundColor: "#FFFFFF",
+            borderTopRightRadius: 24,
+            borderTopLeftRadius: 24,
+            borderTopColor: 'transparent',
+          }
+        }}>
+        <BottomTab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+            title: "Home piola",
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          })}
+        />
+        <BottomTab.Screen
+          name="Contacts"
+          component={ContactsScreen}
+          options={{
+            title: 'Contacts',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          }}
+        />
+        <BottomTab.Screen
+          name="Logout"
+          component={LogoutScreen}
+          options={{
+            title: 'Logout',
+            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          }}
+        />
+      </BottomTab.Navigator>
+    </View>
   );
 }
 

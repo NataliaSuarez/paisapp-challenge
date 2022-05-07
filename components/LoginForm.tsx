@@ -26,6 +26,7 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
           keyboardType="email-address"
           dataDetectorTypes="address"
           defaultValue={email}
+          autoFocus
           onChangeText={(t) => {
             setEmail(t);
           }}
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 24,
     color: '#616E7C',
+    marginBottom: 30,
   },
   link: {
     color: '#738ef1',

@@ -16,6 +16,7 @@ const TextField = ({ label, placeholder, onChangeText, stylesOverride, ...inputP
         style={styles.input}
         placeholder={placeholder}
         onChangeText={onChangeText}
+        disableFullscreenUI
         {...inputProps}
       />
     </View>
