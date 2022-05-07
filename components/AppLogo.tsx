@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import PaisappLogo from './PaisappLogo';
+import PaisappLogo from './icons/PaisappLogo';
 
 const AppLogo = () => {
   return (

@@ -2,6 +2,8 @@ import { StyleSheet } from 'react-native';
 
 import { ScrollView, StatusBar } from 'react-native';
 import Card from '../components/Card';
+import NotificationIcon from '../components/icons/NotificationIcon';
+import SearchIcon from '../components/icons/SearchIcon';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
@@ -16,8 +18,8 @@ export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
             <Text style={styles.username}>Soy Paisanx</Text>
           </View>
           <View style={styles.actionsContainer}>
-            <Text>lup</Text>
-            <Text>aler</Text>
+            <SearchIcon />
+            <NotificationIcon />
           </View>
         </View>
         {/* CARDS COMPONENT */}
@@ -106,6 +108,8 @@ const styles = StyleSheet.create({
   actionsContainer: {
     display: 'flex',
     flexDirection: 'row',
+    width: 57.15,
+    justifyContent: 'space-between'
   },
   cardsContainer: {
     width: '100%',

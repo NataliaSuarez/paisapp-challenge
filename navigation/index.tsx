@@ -7,11 +7,12 @@ import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useContext } from 'react';
+import React from 'react';
 import { ColorSchemeName, View } from 'react-native';
-import { AuthContext } from '../App';
 
-import Colors from '../constants/Colors';
+import HomeLogo from '../components/icons/HomeLogo';
+import ContactsLogo from '../components/icons/ContactsLogo';
+import LogoutLogo from '../components/icons/LogoutLogo';
 import useColorScheme from '../hooks/useColorScheme';
 import ModalScreen from '../screens/ModalScreen';
 import RegisterScreen from '../screens/RegisterScreen';
@@ -113,7 +114,7 @@ function BottomTabNavigator() {
           component={HomeScreen}
           options={({ navigation }: RootTabScreenProps<'Home'>) => ({
             title: "Home piola",
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color }) => <HomeLogo color={color} />,
           })}
         />
         <BottomTab.Screen
@@ -121,7 +122,7 @@ function BottomTabNavigator() {
           component={ContactsScreen}
           options={{
             title: 'Contacts',
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color }) => <ContactsLogo color={color} />,
           }}
         />
         <BottomTab.Screen
@@ -129,7 +130,7 @@ function BottomTabNavigator() {
           component={LogoutScreen}
           options={{
             title: 'Logout',
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            tabBarIcon: ({ color }) => <LogoutLogo color={color} />,
           }}
         />
       </BottomTab.Navigator>
