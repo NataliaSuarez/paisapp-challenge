@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, TouchableNativeFeedback, Pressable } from 'react-native';
 // import { Pressable } from 'react-native';
 // import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
 
@@ -7,7 +7,11 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { AuthContext } from '../App'
 import TextField from '../components/TextField';
 
-const LoginForm = () => {
+type LoginFormProps = {
+  goToRegister: any;
+};
+
+const LoginForm = ({ goToRegister }: LoginFormProps) => {
   const { logIn }: any = useContext(AuthContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,30 +45,20 @@ const LoginForm = () => {
       <View style={styles.submitContainer}>
         <Text style={styles.registerText}>
           <Text>No tienes cuenta? </Text>
-          <Text style={styles.link}>Regístrate</Text>
+          <Text style={styles.link} onPress={goToRegister}>Regístrate</Text>
         </Text>
-        <Pressable
+        <TouchableNativeFeedback
           onPress={() => logIn({ username: 'lala', password: 'lala' })}
-          // disabled={password === '' || email === ''}
-          style={({ pressed }) => ({
-            opacity: pressed ? 0.5 : 1,
-          })}>
-          <View style={styles.button}>
+          disabled={password === '' || email === ''}
+          style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}>
+          <View style={[styles.button, ({ opacity: password === '' || email === '' ? 0.4 : 1 })]}>
             <Text style={styles.buttonLabel}>Ingresar</Text>
           </View>
-        </Pressable>
+        </TouchableNativeFeedback>
       </View>
     </View>
   );
 }
-
-{/* <Pressable
-  onPress={() => navigation.navigate('Register')}
-  style={({ pressed }) => ({
-    opacity: pressed ? 0.5 : 1,
-  })}>
-  <Text>Go to Register!</Text>
-</Pressable> */}
 
 const styles = StyleSheet.create({
   container: {
@@ -93,7 +87,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 24,
-    marginBottom: 30,
     color: '#616E7C',
   },
   link: {

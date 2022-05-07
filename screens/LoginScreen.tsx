@@ -33,7 +33,7 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
   return (
     <View style={styles.container}>
       <AppLogo />
-      <LoginForm />
+      <LoginForm goToRegister={() => navigation.navigate('Register')} />
       <StatusBar style="auto" />
     </View>
   );
