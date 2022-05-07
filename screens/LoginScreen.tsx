@@ -1,50 +1,65 @@
-import { useContext } from 'react';
-import { StyleSheet } from 'react-native';
-import { Pressable } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+// import { Pressable } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
 
-import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
-import { AuthContext } from '../App'
+import AppLogo from '../components/AppLogo';
+import LoginForm from '../components/LoginForm';
 
+const width = Dimensions.get('window').width;
 
 export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>) {
-  const { logIn }: any = useContext(AuthContext);
+  const [fontLoaded, err] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+  });
+
+  if (!fontLoaded) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Pressable
-        onPress={() => navigation.navigate('Register')}
-        style={({ pressed }) => ({
-          opacity: pressed ? 0.5 : 1,
-        })}>
-        <Text>Go to Register!</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => logIn({ username: 'lala', password: 'lala' })}
-        style={({ pressed }) => ({
-          opacity: pressed ? 0.5 : 1,
-        })}>
-        <Text>INGRESAR</Text>
-      </Pressable>
+      <AppLogo />
+      <LoginForm />
+      <StatusBar style="auto" />
     </View>
   );
 }
 
+// <Pressable
+//   onPress={() => navigation.navigate('Register')}
+//   style={({ pressed }) => ({
+//     opacity: pressed ? 0.5 : 1,
+//   })}>
+//   <Text>Go to Register!</Text>
+// </Pressable>
+// <Pressable
+//   onPress={() => logIn({ username: 'lala', password: 'lala' })}
+//   style={({ pressed }) => ({
+//     opacity: pressed ? 0.5 : 1,
+//   })}>
+//   <Text>INGRESAR</Text>
+// </Pressable>
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#F9FAFC',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+    width: width,
+    padding: 24,
   },
 });
