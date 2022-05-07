@@ -1,17 +1,17 @@
 import { StyleSheet } from 'react-native';
 
-import { ScrollView, StatusBar, Dimensions } from 'react-native';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
+import { Dimensions } from 'react-native';
+import { Text, View } from '../Themed';
 
 const width = Dimensions.get('window').width;
 
 const encriptCardNumber = (cardNumber: string) => `**** **** **** ${cardNumber.split(' ')[3]}`;
 
-export default function Card() {
-  const cardNumber = '1211 1222 1233 1234'
+export default function Card({ styleOverride }: any) {
+  const cardNumber = '1211 1222 1233 1234';
+  console.log('styleOverride', styleOverride);
   return (
-    <View style={[styles.defaultBackground, styles.container]}>
+    <View style={[styles.defaultBackground, styles.container, styleOverride]}>
       <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
       <View style={[styles.defaultBackground, styles.balanceNumber]}>
         <Text style={[styles.medium, styles.symbol, styles.defaultTextColor]}>USD</Text>
@@ -73,6 +73,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     backgroundColor: "#89A5FB", /// TODO: Change by linear-gradient
     marginRight: 9,
+    textAlign: 'center',
   },
   balance: {
     fontSize: 22,

@@ -29,7 +29,6 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     );
   }
 
-
   return (
     <View style={styles.container}>
       <AppLogo />
@@ -38,21 +37,6 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
     </View>
   );
 }
-
-// <Pressable
-//   onPress={() => navigation.navigate('Register')}
-//   style={({ pressed }) => ({
-//     opacity: pressed ? 0.5 : 1,
-//   })}>
-//   <Text>Go to Register!</Text>
-// </Pressable>
-// <Pressable
-//   onPress={() => logIn({ username: 'lala', password: 'lala' })}
-//   style={({ pressed }) => ({
-//     opacity: pressed ? 0.5 : 1,
-//   })}>
-//   <Text>INGRESAR</Text>
-// </Pressable>
 
 const styles = StyleSheet.create({
   container: {
