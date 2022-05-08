@@ -5,7 +5,7 @@ import { StyleSheet, Text, View, TouchableNativeFeedback, Pressable } from 'reac
 
 // import { RootTabScreenProps } from '../types';
 import { AuthContext } from '../App'
-import TextField from '../components/TextField';
+import TextField from './common/TextField';
 
 type LoginFormProps = {
   goToRegister: any;
