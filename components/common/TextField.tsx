@@ -1,4 +1,5 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
+import { Shadow } from 'react-native-shadow-2';
 
 type TextFieldProps = {
   label: string;
@@ -8,18 +9,25 @@ type TextFieldProps = {
   inputProps: object;
 }
 
+const paddingHorizontal = 24 * 2;
+const width = Dimensions.get('window').width - paddingHorizontal;
+
 const TextField = ({ label, placeholder, onChangeText, stylesOverride, ...inputProps }: TextFieldProps) => {
   return (
     <View style={[styles.texfield, stylesOverride]}>
       <Text style={styles.label}>{label}</Text>
-      <TextInput
-        style={styles.input}
-        placeholder={placeholder}
-        onChangeText={onChangeText}
-        disableFullscreenUI
-        {...inputProps}
-      />
-    </View>
+      <Shadow offset={[0, 8]} radius={30} startColor="rgba(0, 0, 0, 0.01)" size={[width, 54]}>
+        <TextInput
+          style={styles.input}
+          placeholder={placeholder}
+          onChangeText={onChangeText}
+          disableFullscreenUI
+          selectionColor='#AAAAAA'
+          placeholderTextColor='#AAAAAA'
+          {...inputProps}
+        />
+      </Shadow>
+    </View >
   );
 };
 
@@ -43,10 +51,6 @@ const styles = StyleSheet.create({
     padding: 16,
     height: 54,
     width: '100%',
-    shadowColor: '#000000',
-    shadowOffset: { width: 0, height: 8 },
-    shadowOpacity: 0.06,
-    shadowRadius: 30,
     borderRadius: 12,
   },
 });

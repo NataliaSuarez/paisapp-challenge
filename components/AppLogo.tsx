@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 import PaisappLogo from './icons/PaisappLogo';
 
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 90,
+    paddingTop: (StatusBar.currentHeight || 0) + 53,
     marginBottom: 40,
   },
   logo: { marginBottom: 12 },

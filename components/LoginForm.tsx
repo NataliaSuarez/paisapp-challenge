@@ -1,9 +1,14 @@
 import { useContext, useState } from 'react';
-import { StyleSheet, Text, View, TouchableNativeFeedback, Pressable } from 'react-native';
-// import { Pressable } from 'react-native';
-// import { useFonts, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
-
-// import { RootTabScreenProps } from '../types';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableNativeFeedback,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard
+} from 'react-native';
 import { AuthContext } from '../App'
 import TextField from './common/TextField';
 
@@ -17,32 +22,38 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
   const [password, setPassword] = useState('');
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputsContainer}>
-        <TextField
-          label="Email"
-          placeholder="Ingresa tu email"
-          textContentType="emailAddress"
-          keyboardType="email-address"
-          dataDetectorTypes="address"
-          defaultValue={email}
-          autoFocus
-          onChangeText={(t) => {
-            setEmail(t);
-          }}
-        />
-        <TextField
-          label="Contraseña"
-          placeholder="Ingresa tu contraseña"
-          textContentType="password"
-          secureTextEntry={true}
-          stylesOverride={styles.passwordTextfield}
-          defaultValue={password}
-          onChangeText={(t) => {
-            setPassword(t);
-          }}
-        />
-      </View>
+    <>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.inputsContainer}>
+            <TextField
+              label="Email"
+              placeholder="Ingresa tu email"
+              textContentType="emailAddress"
+              keyboardType="email-address"
+              dataDetectorTypes="address"
+              defaultValue={email}
+              autoFocus
+              onChangeText={(t) => {
+                setEmail(t);
+              }}
+            />
+            <TextField
+              label="Contraseña"
+              placeholder="Ingresa tu contraseña"
+              textContentType="password"
+              secureTextEntry={true}
+              stylesOverride={styles.passwordTextfield}
+              defaultValue={password}
+              onChangeText={(t) => {
+                setPassword(t);
+              }}
+            />
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
       <View style={styles.submitContainer}>
         <Text style={styles.registerText}>
           <Text>No tienes cuenta? </Text>
@@ -51,21 +62,20 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
         <TouchableNativeFeedback
           onPress={() => logIn({ username: 'lala', password: 'lala' })}
           disabled={password === '' || email === ''}
-          style={({ pressed }) => ({ opacity: pressed ? 0.5 : 1 })}>
+        >
           <View style={[styles.button, ({ opacity: password === '' || email === '' ? 0.4 : 1 })]}>
             <Text style={styles.buttonLabel}>Ingresar</Text>
           </View>
         </TouchableNativeFeedback>
-      </View>
-    </View>
+      </View></>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     width: '100%',
   },
   inputsContainer: {

@@ -21,14 +21,14 @@ const recent = (a: Contact, b: Contact) => {
 export default function ContactsScreen() {
   const { data, isLoading } = useContacts();
   const [search, setSearch] = useState('');
+
   const all = useMemo(() => {
     if (isLoading) return [];
     return data.filter(
       (contact: Contact) =>
         !search ||
-        contact.name.toLowerCase().includes(search.toLowerCase()) ||
-        contact.lastName.toLowerCase().includes(search.toLowerCase()) ||
-        contact.phone.includes(search),
+        `${contact.name} ${contact.lastName}`.toLowerCase().includes(search.toLowerCase().trim()) ||
+        contact.phone.includes(search.trim()),
     );
   }, [isLoading, data, search]);
   const recents = useMemo(() => {
