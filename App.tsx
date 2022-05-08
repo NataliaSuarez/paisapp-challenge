@@ -2,11 +2,13 @@ import React, { useState, createContext, useReducer, useMemo } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { QueryClient, QueryClientProvider } from 'react-query';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 
 export const AuthContext = createContext({});
+const queryClient = new QueryClient();
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -52,11 +54,13 @@ export default function App() {
     return (
       <SafeAreaProvider>
         <AuthContext.Provider value={authContext}>
-          <Navigation
-            colorScheme={colorScheme}
-            isLogged={state.isLogged}
-          />
-          <StatusBar />
+          <QueryClientProvider client={queryClient}>
+            <Navigation
+              colorScheme={colorScheme}
+              isLogged={state.isLogged}
+            />
+            <StatusBar />
+          </QueryClientProvider>
         </AuthContext.Provider>
       </SafeAreaProvider>
     );

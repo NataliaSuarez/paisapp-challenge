@@ -1,32 +1,11 @@
+import { useMemo } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { ScrollView } from 'react-native';
 import Card from './Card';
 import { View } from '../../components/Themed';
-
-const cards = [
-  {
-    "id": 1,
-    "number": "1234 2345 2345 1234",
-    "balance": 978.85,
-    "symbol": "USD",
-    "expDate": "02/30"
-  },
-  {
-    "id": 2,
-    "number": "1234 2345 2345 1235",
-    "balance": 100,
-    "symbol": "USD",
-    "expDate": "02/24"
-  },
-  {
-    "id": 3,
-    "number": "1234 2345 2345 3322",
-    "balance": 50,
-    "symbol": "USD",
-    "expDate": "02/24"
-  }
-]
+import useUser from '../../hooks/useUser';
+import LoadingCard from './LoadingCard';
 
 export type Card = {
   id: number;
@@ -37,21 +16,29 @@ export type Card = {
 }
 
 export default function CardList() {
+  const { data, isLoading } = useUser();
+
+  const cards = useMemo(() => isLoading ? [] : data.cards, [isLoading, data])
+
   return (
     <View style={styles.cardsContainer}>
       <ScrollView horizontal style={styles.scrollContainer} showsHorizontalScrollIndicator={false}>
         {
-          cards.map((card, i) => {
-            return (
-              <Card
-                key={card.id}
-                card={card}
-                styleOverride={
-                  i === 0 ? { marginLeft: 24 } : cards.length - 1 === i ? { marginRight: 24 } : undefined
-                }
-              />
-            )
-          })
+          isLoading ?
+            <LoadingCard />
+            :
+            cards.map((card: Card, i: number) => {
+              return (
+                <Card
+                  key={card.id}
+                  card={card}
+                  userName={data.name}
+                  styleOverride={
+                    i === 0 ? { marginLeft: 24 } : cards.length - 1 === i ? { marginRight: 24 } : undefined
+                  }
+                />
+              )
+            })
         }
       </ScrollView>
     </View>
