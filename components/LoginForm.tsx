@@ -8,23 +8,42 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
-  Dimensions
+  Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import { AuthContext } from '../App'
 import TextField from './common/TextField';
 import ShadowDefault from './common/Shadow';
+import useForm from '../hooks/useForm';
+import useLogin from '../hooks/useLogin';
+import ErrorModal from './common/ErrorModal';
 
 type LoginFormProps = {
   goToRegister: any;
 };
 
 const paddingHorizontal = 24 * 2;
-const width = Dimensions.get('window').width - paddingHorizontal;
+const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal;
+const width = Dimensions.get('window').width;
 
 const LoginForm = ({ goToRegister }: LoginFormProps) => {
   const { logIn }: any = useContext(AuthContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [modalVisible, setModalVisible] = useState(false);
+  const initialState = {
+    email: '',
+    password: '',
+  };
+  const onSubmit = (values: any) => mutate(values);
+  const { subscribe, inputs, handleSubmit } = useForm({
+    initialState,
+    onSubmit
+  });
+  const { mutate, isLoading } = useLogin({
+    onSuccess: () => logIn({ username: inputs.email, password: inputs.password }),
+    onError: (e: any) => setModalVisible(true),
+  });
+
+  const disabledInput = inputs.password === '' || inputs.email === '';
 
   return (
     <>
@@ -39,11 +58,9 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
               textContentType="emailAddress"
               keyboardType="email-address"
               dataDetectorTypes="address"
-              defaultValue={email}
+              value={inputs.email}
               autoFocus
-              onChangeText={(t) => {
-                setEmail(t);
-              }}
+              onChangeText={subscribe('email')}
             />
             <TextField
               label="Contraseña"
@@ -51,10 +68,8 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
               textContentType="password"
               secureTextEntry={true}
               stylesOverride={styles.passwordTextfield}
-              defaultValue={password}
-              onChangeText={(t) => {
-                setPassword(t);
-              }}
+              value={inputs.password}
+              onChangeText={subscribe('password')}
             />
           </View>
         </TouchableWithoutFeedback>
@@ -64,16 +79,19 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
           <Text>No tienes cuenta? </Text>
           <Text style={styles.link} onPress={goToRegister}>Regístrate</Text>
         </Text>
-        <ShadowDefault size={[width, 60]}>
+        <ShadowDefault size={[widthWithouPadding, 60]}>
           <TouchableNativeFeedback
-            onPress={() => logIn({ username: 'lala', password: 'lala' })}
-            disabled={password === '' || email === ''}
+            onPress={handleSubmit}
+            disabled={disabledInput}
           >
-            <View style={[styles.button, ({ opacity: password === '' || email === '' ? 0.4 : 1 })]}>
-              <Text style={styles.buttonLabel}>Ingresar</Text>
+            <View style={[styles.button, ({ opacity: disabledInput ? 0.4 : 1 })]}>
+              <Text style={styles.buttonLabel}>{isLoading ?
+                (<ActivityIndicator size="small" color="#FAFAFA" />)
+                : 'Ingresar'}</Text>
             </View>
           </TouchableNativeFeedback>
         </ShadowDefault>
+        <ErrorModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
       </View></>
   );
 }
@@ -82,7 +100,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    // justifyContent: 'space-between',
     width: '100%',
   },
   inputsContainer: {
@@ -117,6 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#005CEE',
     alignItems: 'center',
     borderRadius: 16,
+    transition: .3,
   },
   buttonLabel: {
     fontSize: 16,
