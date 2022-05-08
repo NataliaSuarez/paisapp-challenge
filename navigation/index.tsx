@@ -31,8 +31,6 @@ type NavigationProps = {
 
 export default function Navigation({ colorScheme, isLogged }: NavigationProps) {
 
-  console.log('isLogged', isLogged);
-
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
@@ -87,14 +85,10 @@ function RootNavigator() {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
-
     <View style={{ flex: 1, backgroundColor: '#F9FAFC' }}>
       <BottomTab.Navigator
         initialRouteName="Home"
-        // sceneContainerStyle={{ backgroundColor: "#FFFFFF" }}
         screenOptions={{
           headerShown: false,
           tabBarActiveTintColor: "#6C8FF8",//Colors[colorScheme].tint,

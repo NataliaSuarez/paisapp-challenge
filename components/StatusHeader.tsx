@@ -12,7 +12,7 @@ export default function StatusHeader() {
         <Text style={styles.username}>Soy Paisanx</Text>
       </View>
       <View style={styles.actionsContainer}>
-        <SearchIcon />
+        <SearchIcon color="#200E32" />
         <NotificationIcon />
       </View>
     </View>

@@ -8,8 +8,6 @@ import TransactionsList from '../components/TransactionsList';
 import { View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 
-const width = Dimensions.get('window').width;
-
 export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
   return (
     <View style={styles.container}>
