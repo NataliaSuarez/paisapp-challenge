@@ -1,14 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView, StatusBar } from 'react-native';
 
-import { ScrollView, StatusBar, Dimensions } from 'react-native';
+import { View } from '../components/Themed';
 import CardList from '../components/CardList';
 import StatusHeader from '../components/StatusHeader';
 import ServiciosMenu from '../components/ServiciosMenu';
 import TransactionsList from '../components/TransactionsList';
-import { View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
 
-export default function HomeScreen({ navigation }: RootTabScreenProps<'Home'>) {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} showsHorizontalScrollIndicator={false} >

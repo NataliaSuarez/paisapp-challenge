@@ -3,13 +3,16 @@ import { StyleSheet } from 'react-native';
 import NotificationIcon from '../components/icons/NotificationIcon';
 import SearchIcon from '../components/icons/SearchIcon';
 import { Text, View } from '../components/Themed';
+import useUser from '../hooks/useUser';
 
 export default function StatusHeader() {
+  const { data, isLoading } = useUser();
+
   return (
     <View style={styles.header}>
       <View style={styles.welcomeContainer}>
         <Text style={styles.welcomeText}>Hola</Text>
-        <Text style={styles.username}>Soy Paisanx</Text>
+        <Text style={styles.username}>{isLoading ? ' ' : data.name}</Text>
       </View>
       <View style={styles.actionsContainer}>
         <SearchIcon color="#200E32" />

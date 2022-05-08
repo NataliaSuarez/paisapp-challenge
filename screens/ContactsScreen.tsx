@@ -1,13 +1,14 @@
 import { StyleSheet } from 'react-native';
 import { useMemo } from 'react';
 import { ScrollView, StatusBar, Dimensions } from 'react-native';
+
 import BackHeader from '../components/BackHeader';
-import SearchContacts from '../components/SearchContacts';
 import ContactsList from '../components/ContactsList';
-import { View } from '../components/Themed';
+import SearchContacts from '../components/SearchContacts';
 import useContacts from '../hooks/useContacts';
-import { Contact } from '../components/ContactsList/index'
 import LoadingContactsList from '../components/ContactsList/LoadingContactLists'
+import { View } from '../components/Themed';
+import { Contact } from '../types'
 
 const width = Dimensions.get('window').width;
 
