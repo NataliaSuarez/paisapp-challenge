@@ -7,15 +7,16 @@ type TextFieldProps = {
   onChangeText: any;
   stylesOverride: any;
   inputProps: object;
+  labelStyleOverride: any;
 }
 
 const paddingHorizontal = 24 * 2;
 const width = Dimensions.get('window').width - paddingHorizontal;
 
-const TextField = ({ label, placeholder, onChangeText, stylesOverride, ...inputProps }: TextFieldProps) => {
+const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyleOverride, ...inputProps }: TextFieldProps) => {
   return (
     <View style={[styles.texfield, stylesOverride]}>
-      <Text style={styles.label}>{label}</Text>
+      <Text style={[styles.label, labelStyleOverride]}>{label}</Text>
       <ShadowDefault size={[width, 54]}>
         <TextInput
           style={styles.input}

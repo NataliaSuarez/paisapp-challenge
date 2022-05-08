@@ -17,16 +17,14 @@ import ShadowDefault from './common/Shadow';
 import useForm from '../hooks/useForm';
 import useLogin from '../hooks/useLogin';
 import ErrorModal from './common/ErrorModal';
-
-type LoginFormProps = {
-  goToRegister?: any;
-};
+import { useNavigation } from '@react-navigation/native';
 
 const paddingHorizontal = 24 * 2;
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal;
 const width = Dimensions.get('window').width;
 
-const LoginForm = ({ goToRegister }: LoginFormProps) => {
+const RegisterForm = () => {
+  const navigation = useNavigation();
   const { logIn }: any = useContext(AuthContext);
   const [modalVisible, setModalVisible] = useState(false);
   const initialState = {
@@ -61,6 +59,7 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
               value={inputs.email}
               autoFocus
               onChangeText={subscribe('email')}
+              labelStyleOverride={{ color: '#FAFAFA' }}
             />
             <TextField
               label="Contraseña"
@@ -70,25 +69,25 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
               stylesOverride={styles.passwordTextfield}
               value={inputs.password}
               onChangeText={subscribe('password')}
+              labelStyleOverride={{ color: '#FAFAFA' }}
             />
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
       <View style={styles.submitContainer}>
-        {
-          !!goToRegister ? <Text style={styles.registerText}>
-            <Text>No tienes cuenta? </Text>
-            <Text style={styles.link} onPress={goToRegister}>Regístrate</Text>
-          </Text> : <View></View>}
+        <Text style={styles.registerText}>
+          <Text>Volver a </Text>
+          <Text style={styles.link} onPress={() => navigation.goBack()}>Iniciar sesión</Text>
+        </Text>
         <ShadowDefault size={[widthWithouPadding, 60]}>
           <TouchableNativeFeedback
-            onPress={handleSubmit}
+            onPress={() => navigation.goBack()}
             disabled={disabledInput}
           >
             <View style={[styles.button, ({ opacity: disabledInput ? 0.4 : 1 })]}>
               <Text style={styles.buttonLabel}>{isLoading ?
                 (<ActivityIndicator size="small" color="#FAFAFA" />)
-                : 'Ingresar'}</Text>
+                : 'Crear cuenta'}</Text>
             </View>
           </TouchableNativeFeedback>
         </ShadowDefault>
@@ -119,20 +118,25 @@ const styles = StyleSheet.create({
     marginBottom: 17,
   },
   registerText: {
+    fontFamily: 'Poppins_400Regular',
+    fontSize: 18,
+    fontWeight: '400',
+    lineHeight: 24,
+    color: '#F9FAFC',
+    marginBottom: 30,
+  },
+  link: {
     fontFamily: 'Poppins_500Medium',
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 24,
-    color: '#616E7C',
-    marginBottom: 30,
-  },
-  link: {
     color: '#738ef1',
+    marginBottom: 30,
   },
   button: {
     width: '100%',
     padding: 19,
-    backgroundColor: '#005CEE',
+    backgroundColor: '#738ef1',
     alignItems: 'center',
     borderRadius: 16,
     transition: .3,
@@ -140,10 +144,10 @@ const styles = StyleSheet.create({
   buttonLabel: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#FFFFFF',
+    color: '#F9FAFC',
     lineHeight: 22,
     fontFamily: 'Poppins_600SemiBold',
   },
 });
 
-export default LoginForm;
+export default RegisterForm;

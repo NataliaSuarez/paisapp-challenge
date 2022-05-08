@@ -1,18 +1,41 @@
 import { StatusBar } from 'expo-status-bar';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import RegisterForm from '../components/RegisterForm';
+
+const width = Dimensions.get('window').width;
 
 export default function RegisterScreen() {
+  const [fontLoaded, err] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+  });
+
+  if (!fontLoaded) {
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Register</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/RegisterScreen.tsx" />
-
-      {/* Use a light status bar on iOS to account for the black space above the Register */}
-      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+      <View style={{ flex: 1, alignItems: 'center', }}>
+        <Text style={styles.title}>Regístrate</Text>
+        <Text style={styles.subtitle}>Comienza a manejar tu vida financiera</Text>
+      </View>
+      <View style={{ flex: 2, marginBottom: 32 }}>
+        <RegisterForm />
+      </View>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -20,16 +43,27 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#005CEE',
     alignItems: 'center',
-    justifyContent: 'center',
+    width: width,
+    paddingTop: (StatusBar.currentHeight || 0) + 53,
+    paddingHorizontal: 24,
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    marginTop: 32,
+    marginBottom: 24,
+    color: '#FFFFFF',
+    fontFamily: 'Poppins_500Medium',
+    fontWeight: '500',
+    fontSize: 22,
+    lineHeight: 28,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  subtitle: {
+    marginBottom: 32,
+    color: '#AAAAAA',
+    fontFamily: 'Poppins_400Regular',
+    fontWeight: '400',
+    fontSize: 16,
+    lineHeight: 24,
   },
 });
