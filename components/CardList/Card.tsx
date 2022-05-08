@@ -2,27 +2,32 @@ import { StyleSheet } from 'react-native';
 
 import { Dimensions } from 'react-native';
 import { Text, View } from '../Themed';
+import { Card as CardType } from './index';
 
 const width = Dimensions.get('window').width;
 
 const encriptCardNumber = (cardNumber: string) => `**** **** **** ${cardNumber.split(' ')[3]}`;
 
-export default function Card({ styleOverride }: any) {
-  const cardNumber = '1211 1222 1233 1234';
-  console.log('styleOverride', styleOverride);
+type CardProps = {
+  card: CardType;
+  styleOverride: object | undefined;
+}
+
+export default function Card({ card, styleOverride }: CardProps) {
+
   return (
     <View style={[styles.defaultBackground, styles.container, styleOverride]}>
       <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
       <View style={[styles.defaultBackground, styles.balanceNumber]}>
-        <Text style={[styles.medium, styles.symbol, styles.defaultTextColor]}>USD</Text>
-        <Text style={[styles.medium, styles.balance, styles.defaultTextColor]}>978.85</Text>
+        <Text style={[styles.medium, styles.symbol, styles.defaultTextColor]}>{card.symbol}</Text>
+        <Text style={[styles.medium, styles.balance, styles.defaultTextColor]}>{card.balance}</Text>
       </View>
-      <Text style={[styles.regular, styles.cardNumber, styles.defaultTextColor]}>{encriptCardNumber(cardNumber)}</Text>
+      <Text style={[styles.regular, styles.cardNumber, styles.defaultTextColor]}>{encriptCardNumber(card.number)}</Text>
       <View style={[styles.defaultBackground, styles.cardInfo]}>
         <Text style={[styles.regular, styles.username, styles.defaultTextColor]}>Soy Paisanx</Text>
         <View style={[styles.defaultBackground, styles.expDateContainer]}>
           <Text style={[styles.medium, styles.defaultTextColor, styles.expDateTitle]}>Exp. Date</Text>
-          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>02/30</Text>
+          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>{card.expDate}</Text>
         </View>
       </View>
     </View>
