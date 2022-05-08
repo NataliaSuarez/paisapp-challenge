@@ -1,23 +1,37 @@
-import { StyleSheet, TextInput } from 'react-native';
+import { StyleSheet, TextInput, Dimensions } from 'react-native';
 
 import SearchIcon from './icons/SearchIcon';
 import { View } from '../components/Themed';
+import ShadowDefault from './common/Shadow';
 
 type SearchContactsProps = {
   search: string;
   setSearch: any;
 }
 
+const paddingHorizontal = 24 * 2;
+const width = Dimensions.get('window').width - paddingHorizontal;
+
 export default function SearchContacts({ search, setSearch }: SearchContactsProps) {
   return (
-    <View style={styles.container}>
-      <View style={styles.search}><SearchIcon color="#AAAAAA" /></View>
-      <TextInput
-        style={styles.input}
-        placeholder="Ingresa un nombre o un número"
-        onChangeText={setSearch}
-        value={search}
-      />
+    <View style={{
+      marginTop: 46,
+      marginBottom: 30,
+      width: '100%',
+    }}>
+      <ShadowDefault size={[width, 60]}>
+        <View style={styles.container}>
+          <View style={styles.search}><SearchIcon color="#AAAAAA" /></View>
+          <TextInput
+            style={styles.input}
+            placeholder="Ingresa un nombre o un número"
+            onChangeText={setSearch}
+            selectionColor='#AAAAAA'
+            placeholderTextColor='#AAAAAA'
+            value={search}
+          />
+        </View>
+      </ShadowDefault>
     </View>
   );
 }
@@ -25,9 +39,8 @@ export default function SearchContacts({ search, setSearch }: SearchContactsProp
 const styles = StyleSheet.create({
   container: {
     height: 60,
+    width: width,
     marginHorizontal: 24,
-    marginTop: 46,
-    marginBottom: 30,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     paddingHorizontal: 16,

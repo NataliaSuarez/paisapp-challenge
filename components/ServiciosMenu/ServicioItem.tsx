@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Text, View } from '../../components/Themed';
+import ShadowDefault from '../common/Shadow';
 
 type ServicioItemProps = {
   label: string;
@@ -10,9 +11,11 @@ type ServicioItemProps = {
 export default function ServicioItem({ label, backgroundColor, Icon }: ServicioItemProps) {
   return (
     <View style={styles.actionBoxContainer}>
-      <View style={[styles.actionBox, { backgroundColor: backgroundColor }]}>
-        <Icon />
-      </View>
+      <ShadowDefault size={[70, 70]}>
+        <View style={[styles.actionBox, { backgroundColor: backgroundColor }]}>
+          <Icon />
+        </View>
+      </ShadowDefault>
       <Text style={styles.actionTitle}>{label}</Text>
     </View>
   );

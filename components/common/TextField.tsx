@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
-import { Shadow } from 'react-native-shadow-2';
+import ShadowDefault from './Shadow';
 
 type TextFieldProps = {
   label: string;
@@ -16,7 +16,7 @@ const TextField = ({ label, placeholder, onChangeText, stylesOverride, ...inputP
   return (
     <View style={[styles.texfield, stylesOverride]}>
       <Text style={styles.label}>{label}</Text>
-      <Shadow offset={[0, 8]} radius={30} startColor="rgba(0, 0, 0, 0.01)" size={[width, 54]}>
+      <ShadowDefault size={[width, 54]}>
         <TextInput
           style={styles.input}
           placeholder={placeholder}
@@ -26,7 +26,7 @@ const TextField = ({ label, placeholder, onChangeText, stylesOverride, ...inputP
           placeholderTextColor='#AAAAAA'
           {...inputProps}
         />
-      </Shadow>
+      </ShadowDefault>
     </View >
   );
 };

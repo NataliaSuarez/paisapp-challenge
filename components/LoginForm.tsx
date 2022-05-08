@@ -7,14 +7,19 @@ import {
   KeyboardAvoidingView,
   Platform,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Dimensions
 } from 'react-native';
 import { AuthContext } from '../App'
 import TextField from './common/TextField';
+import ShadowDefault from './common/Shadow';
 
 type LoginFormProps = {
   goToRegister: any;
 };
+
+const paddingHorizontal = 24 * 2;
+const width = Dimensions.get('window').width - paddingHorizontal;
 
 const LoginForm = ({ goToRegister }: LoginFormProps) => {
   const { logIn }: any = useContext(AuthContext);
@@ -59,14 +64,16 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
           <Text>No tienes cuenta? </Text>
           <Text style={styles.link} onPress={goToRegister}>Regístrate</Text>
         </Text>
-        <TouchableNativeFeedback
-          onPress={() => logIn({ username: 'lala', password: 'lala' })}
-          disabled={password === '' || email === ''}
-        >
-          <View style={[styles.button, ({ opacity: password === '' || email === '' ? 0.4 : 1 })]}>
-            <Text style={styles.buttonLabel}>Ingresar</Text>
-          </View>
-        </TouchableNativeFeedback>
+        <ShadowDefault size={[width, 60]}>
+          <TouchableNativeFeedback
+            onPress={() => logIn({ username: 'lala', password: 'lala' })}
+            disabled={password === '' || email === ''}
+          >
+            <View style={[styles.button, ({ opacity: password === '' || email === '' ? 0.4 : 1 })]}>
+              <Text style={styles.buttonLabel}>Ingresar</Text>
+            </View>
+          </TouchableNativeFeedback>
+        </ShadowDefault>
       </View></>
   );
 }

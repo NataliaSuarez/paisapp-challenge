@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Dimensions } from 'react-native';
 import { Text, View } from '../Themed';
+import ShadowDefault from './Shadow';
 
 type InfoCardProps = {
   Icon: any;
@@ -11,21 +11,28 @@ type InfoCardProps = {
   color: string;
 }
 
+const paddingHorizontal = 24 * 2;
+const width = Dimensions.get('window').width - paddingHorizontal;
+
 export default function InfoCard({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
   return (
-    <View style={styles.contactCard}>
-      <View style={styles.leftData}>
-        <View style={[styles.actionBox, { backgroundColor: backgroundColor }]}>
-          <Icon />
+    <View style={{ marginBottom: 16 }}>
+      <ShadowDefault size={[width, 92]}>
+        <View style={styles.contactCard}>
+          <View style={styles.leftData}>
+            <View style={[styles.actionBox, { backgroundColor: backgroundColor }]}>
+              <Icon />
+            </View>
+            <View style={styles.info}>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.description}>{description}</Text>
+            </View>
+          </View>
+          {!!optional ?
+            <Text style={[styles.optional, { color: color }]}>{optional}</Text> : null
+          }
         </View>
-        <View style={styles.info}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
-        </View>
-      </View>
-      {!!optional ?
-        <Text style={[styles.optional, { color: color }]}>{optional}</Text> : null
-      }
+      </ShadowDefault>
     </View>
   );
 }
