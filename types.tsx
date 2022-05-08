@@ -43,3 +43,32 @@ type AuthContext = {
   isLoading: boolean;
   isLogged: boolean;
 }
+
+export type Card = {
+  id: number;
+  number: string;
+  balance: number;
+  symbol: string;
+  expDate: string;
+}
+
+export type Contact = {
+  id: number;
+  name: string;
+  lastName: string;
+  phone: string;
+  contacted: string;
+}
+
+export enum TransactionType {
+  Debit = 'DEBIT',
+  Payment = 'PAYMENT',
+}
+
+export type Transaction = {
+  id: number;
+  type: TransactionType;
+  title: string;
+  description: string;
+  total: number;
+}

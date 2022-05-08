@@ -4,19 +4,7 @@ import { Text, View } from '../../components/Themed';
 import TransactionsCard from './TransactionCard';
 import useTransactions from '../../hooks/useTransactions';
 import LoadingInfoCard from '../common/LoadingInfoCard';
-
-export enum TransactionType {
-  Debit = 'DEBIT',
-  Payment = 'PAYMENT',
-}
-
-export type Transaction = {
-  id: number;
-  type: TransactionType;
-  title: string;
-  description: string;
-  total: number;
-}
+import { Transaction } from '../../types';
 
 export default function TransactionsList() {
   const { data, isLoading } = useTransactions();
@@ -30,9 +18,9 @@ export default function TransactionsList() {
           isLoading
             ?
             <LoadingInfoCard />
-            : transactions.map((transaction) => {
+            : transactions.map((transaction: Transaction, i: number) => {
               return (
-                <TransactionsCard key={transaction.id} transaction={transaction} />
+                <TransactionsCard key={`${transaction.id}-${i}`} transaction={transaction} />
               )
             })
         }

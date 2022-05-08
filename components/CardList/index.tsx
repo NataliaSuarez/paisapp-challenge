@@ -6,14 +6,7 @@ import Card from './Card';
 import { View } from '../../components/Themed';
 import useUser from '../../hooks/useUser';
 import LoadingCard from './LoadingCard';
-
-export type Card = {
-  id: number;
-  number: string;
-  balance: number;
-  symbol: string;
-  expDate: string;
-}
+import { Card as CardType } from '../../types'
 
 export default function CardList() {
   const { data, isLoading } = useUser();
@@ -27,10 +20,10 @@ export default function CardList() {
           isLoading ?
             <LoadingCard />
             :
-            cards.map((card: Card, i: number) => {
+            cards.map((card: CardType, i: number) => {
               return (
                 <Card
-                  key={card.id}
+                  key={`${card.id}-${i}`}
                   card={card}
                   userName={data.name}
                   styleOverride={

@@ -1,7 +1,7 @@
 import InfoCard from '../common/InfoCard';
 import DebitIcon from '../icons/DebitIcon';
 import PaymentIcon from '../icons/PaymentIcon';
-import { Transaction, TransactionType } from './index';
+import { Transaction, TransactionType } from '../../types';
 
 type TransactionCardProp = {
   transaction: Transaction;

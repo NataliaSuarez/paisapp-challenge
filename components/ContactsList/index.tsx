@@ -2,14 +2,7 @@ import { StyleSheet } from 'react-native';
 
 import { Text, View } from '../../components/Themed';
 import ContactCard from './ContactCard';
-
-export type Contact = {
-  id: number;
-  name: string;
-  lastName: string;
-  phone: string;
-  contacted: string;
-}
+import { Contact } from '../../types';
 
 type ContactsListProps = {
   label: string;
@@ -22,9 +15,9 @@ export default function ContactsList({ label, contacts }: ContactsListProps) {
       <Text style={styles.title}>{label}</Text>
       <View style={styles.divider}></View>
       <View style={styles.list}>
-        {contacts.map((contact) => {
+        {contacts.map((contact: Contact, i: number) => {
           return (
-            <ContactCard key={contact.id} contact={contact} />
+            <ContactCard key={`${contact.id}-${i}`} contact={contact} />
           )
         })}
       </View>
