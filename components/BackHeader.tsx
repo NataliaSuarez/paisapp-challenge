@@ -4,27 +4,34 @@ import { Text, View } from '../components/Themed';
 import { useNavigation } from '@react-navigation/native';
 import BackIcon from './icons/BackIcon';
 
-export default function BackHeader() {
+type BackHeaderProps = {
+  label: string;
+}
+
+export default function BackHeader({ label }: BackHeaderProps) {
   const navigation = useNavigation();
 
   return (
     <View style={styles.header}>
       <Text style={styles.back} onPress={() => navigation.goBack()}><BackIcon /></Text>
-      <Text style={styles.title} onPress={() => navigation.goBack()}>Contactos</Text>
+      <Text style={styles.title} onPress={() => navigation.goBack()}>{label}</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
+    flex: 1,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'baseline',
-    height: 28,
-    marginTop: 34,
+    height: 44,
+    paddingBottom: 16,
     paddingHorizontal: 24,
     backgroundColor: "#F9FAFC",
+    position: 'absolute',
+    top: 0,
   },
   back: {
     marginRight: 24,

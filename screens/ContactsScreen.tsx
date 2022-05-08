@@ -72,11 +72,13 @@ const all = [{
 export default function ContactsScreen() {
   return (
     <View style={styles.container}>
+      <View style={styles.backContainer}>
+        <BackHeader label="Contactos" />
+      </View>
       <ScrollView style={styles.scrollContainer} >
-        <BackHeader />
         <SearchContacts />
         <ContactsList contacts={recents} label="Recents" />
-        <ContactsList contacts={all} label="Recents" />
+        <ContactsList contacts={all} label="All" />
       </ScrollView>
     </View>
   );
@@ -88,6 +90,10 @@ const styles = StyleSheet.create({
     paddingTop: StatusBar.currentHeight,
     alignItems: 'flex-start',
     backgroundColor: "#F9FAFC"
+  },
+  backContainer: {
+    marginTop: 34,
+    zIndex: 100,
   },
   scrollContainer: {
     width: width,
