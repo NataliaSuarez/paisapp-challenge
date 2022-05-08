@@ -33,7 +33,10 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
     email: '',
     password: '',
   };
-  const onSubmit = (values: any) => mutate(values);
+  const onSubmit = (values: any) => mutate({
+    email: values.email.toLowerCase().trim(),
+    password: values.password, // TODO: Add Encode
+  });
   const { subscribe, inputs, handleSubmit } = useForm({
     initialState,
     onSubmit

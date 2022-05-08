@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { Dimensions } from 'react-native';
+import CardLogo from '../icons/CardLogo';
 import { Text, View } from '../Themed';
 import { Card as CardType } from './index';
 
@@ -18,10 +19,15 @@ export default function Card({ card, userName, styleOverride }: CardProps) {
 
   return (
     <View style={[styles.defaultBackground, styles.container, styleOverride]}>
-      <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
-      <View style={[styles.defaultBackground, styles.balanceNumber]}>
-        <Text style={[styles.medium, styles.symbol, styles.defaultTextColor]}>{card.symbol}</Text>
-        <Text style={[styles.medium, styles.balance, styles.defaultTextColor]}>{card.balance}</Text>
+      <View style={[styles.defaultBackground, { flexDirection: 'row', alignContent: 'center', justifyContent: 'space-between' }]}>
+        <View style={[styles.defaultBackground, { flexDirection: 'column' }]}>
+          <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
+          <View style={[styles.defaultBackground, styles.balanceNumber]}>
+            <Text style={[styles.medium, styles.symbol, styles.defaultTextColor]}>{card.symbol}</Text>
+            <Text style={[styles.medium, styles.balance, styles.defaultTextColor]}>{card.balance}</Text>
+          </View>
+        </View>
+        <CardLogo />
       </View>
       <Text style={[styles.regular, styles.cardNumber, styles.defaultTextColor]}>{encriptCardNumber(card.number)}</Text>
       <View style={[styles.defaultBackground, styles.cardInfo]}>
