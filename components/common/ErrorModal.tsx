@@ -6,7 +6,7 @@ import {
   Pressable,
   Modal,
 } from 'react-native';
-import ShadowDefault from './Shadow';
+import { Shadow } from 'react-native-shadow-2';
 
 type ErrorModalProps = {
   modalVisible: boolean;
@@ -28,7 +28,7 @@ const ErrorModal = ({ modalVisible, setModalVisible }: ErrorModalProps) => {
       }}
     >
       <View style={styles.modalContainer}>
-        <ShadowDefault size={[widthWithouPadding, 92]} startColor="rgba(0, 0, 0, 0.05)">
+        <Shadow offset={[0, 0]} radius={30} size={[widthWithouPadding, 92]} startColor="rgba(0, 0, 0, 0.07)">
           <View style={styles.modal}>
             <Pressable
               onPress={() => setModalVisible(false)}
@@ -37,11 +37,11 @@ const ErrorModal = ({ modalVisible, setModalVisible }: ErrorModalProps) => {
                 alignItems: "center",
               }}
             >
-              <Text style={styles.errorDescription}>No se pudo iniciar sesión!</Text>
-              <Text style={styles.tryAgainDescription}>Try again</Text>
+              <Text style={styles.errorDescription}>No se pudo iniciar sesión</Text>
+              <Text style={styles.tryAgainDescription}>Intentar nuevamente</Text>
             </Pressable>
           </View>
-        </ShadowDefault>
+        </Shadow>
       </View>
     </Modal>
   );
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: widthWithouPadding,
     height: 92,
-    backgroundColor: "white",
+    backgroundColor: '#FAFAFA',
     borderRadius: 20,
     paddingTop: 24,
     paddingBottom: 26,

@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#AAAAAA",
     width: 74,
     height: 26,
+    borderRadius: 12,
   },
   symbol: {
     width: 48,
@@ -80,11 +81,13 @@ const styles = StyleSheet.create({
     width: 218,
     height: 22,
     marginVertical: 24,
+    borderRadius: 12,
   },
   username: {
     backgroundColor: "#AAAAAA",
     width: 141,
     height: 23,
+    borderRadius: 12,
   },
   cardInfo: {
     display: 'flex',
@@ -103,5 +106,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#AAAAAA",
     width: 41,
     height: 13,
+    borderRadius: 12,
   },
 });

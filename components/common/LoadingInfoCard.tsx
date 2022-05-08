@@ -52,10 +52,12 @@ const styles = StyleSheet.create({
     width: 53,
     height: 22,
     marginBottom: 4,
+    borderRadius: 12,
   },
   description: {
     color: '#AAAAAA',
     width: 82,
     height: 16,
+    borderRadius: 12,
   },
 });

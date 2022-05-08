@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     height: 22,
     width: 65,
+    borderRadius: 12,
   },
   divider: {
     borderBottomColor: '#ACBAC3',

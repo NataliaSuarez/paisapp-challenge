@@ -15,7 +15,7 @@ import { AuthContext } from '../App'
 import TextField from './common/TextField';
 import ShadowDefault from './common/Shadow';
 import useForm from '../hooks/useForm';
-import useLogin from '../hooks/useLogin';
+import useRegister from '../hooks/useRegister';
 import ErrorModal from './common/ErrorModal';
 import { useNavigation } from '@react-navigation/native';
 
@@ -36,9 +36,9 @@ const RegisterForm = () => {
     initialState,
     onSubmit
   });
-  const { mutate, isLoading } = useLogin({
-    onSuccess: () => logIn({ username: inputs.email, password: inputs.password }),
-    onError: (e: any) => setModalVisible(true),
+  const { mutate, isLoading } = useRegister({
+    onSuccess: () => navigation.goBack(),
+    onError: (e: any) => console.log(e),
   });
 
   const disabledInput = inputs.password === '' || inputs.email === '';
@@ -81,7 +81,7 @@ const RegisterForm = () => {
         </Text>
         <ShadowDefault size={[widthWithouPadding, 60]}>
           <TouchableNativeFeedback
-            onPress={() => navigation.goBack()}
+            onPress={() => mutate({ email: inputs.email, password: inputs.password })}
             disabled={disabledInput}
           >
             <View style={[styles.button, ({ opacity: disabledInput ? 0.4 : 1 })]}>
