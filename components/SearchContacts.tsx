@@ -1,13 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, TextInput } from 'react-native';
 
 import SearchIcon from './icons/SearchIcon';
-import { Text, View } from '../components/Themed';
+import { View } from '../components/Themed';
 
-export default function SearchContacts() {
+type SearchContactsProps = {
+  search: string;
+  setSearch: any;
+}
+
+export default function SearchContacts({ search, setSearch }: SearchContactsProps) {
   return (
     <View style={styles.container}>
       <View style={styles.search}><SearchIcon color="#AAAAAA" /></View>
-      <Text style={styles.input}>Ingresa un nombre o un número</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Ingresa un nombre o un número"
+        onChangeText={setSearch}
+        value={search}
+      />
     </View>
   );
 }
@@ -34,5 +44,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 12,
     color: "#AAAAAA",
+    width: "100%"
   },
 });

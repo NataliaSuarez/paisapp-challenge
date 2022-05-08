@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ScrollView, StatusBar, Dimensions } from 'react-native';
 
 import BackHeader from '../components/BackHeader';
@@ -20,7 +20,17 @@ const recent = (a: Contact, b: Contact) => {
 
 export default function ContactsScreen() {
   const { data, isLoading } = useContacts();
-  const all = useMemo(() => isLoading ? [] : data, [isLoading, data]);
+  const [search, setSearch] = useState('');
+  const all = useMemo(() => {
+    if (isLoading) return [];
+    return data.filter(
+      (contact: Contact) =>
+        !search ||
+        contact.name.toLowerCase().includes(search.toLowerCase()) ||
+        contact.lastName.toLowerCase().includes(search.toLowerCase()) ||
+        contact.phone.includes(search),
+    );
+  }, [isLoading, data, search]);
   const recents = useMemo(() => {
     if (isLoading) return [];
     const [latest, penultimate] = [...data].sort(recent);
@@ -34,7 +44,7 @@ export default function ContactsScreen() {
         <BackHeader label="Contactos" />
       </View>
       <ScrollView style={styles.scrollContainer} >
-        <SearchContacts />
+        <SearchContacts search={search} setSearch={setSearch} />
         {
           isLoading ?
             <>
@@ -43,7 +53,7 @@ export default function ContactsScreen() {
             </>
             :
             <>
-              <ContactsList contacts={recents} label="Recents" />
+              {search.length > 0 ? null : <ContactsList contacts={recents} label="Recents" />}
               <ContactsList contacts={all} label="All" />
             </>
         }
