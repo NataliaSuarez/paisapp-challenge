@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import {
   StyleSheet,
   Text,
@@ -17,21 +18,20 @@ import ShadowDefault from './common/Shadow';
 import useForm from '../hooks/useForm';
 import useLogin from '../hooks/useLogin';
 import ErrorModal from './common/ErrorModal';
-
-type LoginFormProps = {
-  goToRegister?: any;
-};
+import { useNavigation } from '@react-navigation/native';
 
 const paddingHorizontal = 24 * 2;
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal;
 const width = Dimensions.get('window').width;
 
-const LoginForm = ({ goToRegister }: LoginFormProps) => {
+const LoginForm = () => {
+  const navigation = useNavigation()
   const { logIn }: any = useContext(AuthContext);
   const [modalVisible, setModalVisible] = useState(false);
   const initialState = {
     email: '',
     password: '',
+    remind: false,
   };
   const onSubmit = (values: any) => mutate({
     email: values.email.toLowerCase().trim(),
@@ -74,15 +74,28 @@ const LoginForm = ({ goToRegister }: LoginFormProps) => {
               value={inputs.password}
               onChangeText={subscribe('password')}
             />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <BouncyCheckbox
+                size={18}
+                fillColor="#DBDBDB"
+                unfillColor="#DBDBDB"
+                isChecked={inputs.remind}
+                onPress={subscribe('remind')}
+                style={{ width: 18, marginRight: 8 }}
+                iconStyle={{
+                  borderRadius: 6,
+                }}
+              />
+              <Text style={styles.checkboxLabel}>Recordarme</Text>
+            </View>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
       <View style={styles.submitContainer}>
-        {
-          !!goToRegister ? <Text style={styles.registerText}>
-            <Text>No tienes cuenta? </Text>
-            <Text style={styles.link} onPress={goToRegister}>Regístrate</Text>
-          </Text> : <View></View>}
+        <Text style={styles.registerText}>
+          <Text>No tienes cuenta? </Text>
+          <Text style={styles.link} onPress={() => navigation.navigate('Register')}>Regístrate</Text>
+        </Text>
         <ShadowDefault size={[widthWithouPadding, 60]}>
           <TouchableNativeFeedback
             onPress={handleSubmit}
@@ -141,11 +154,18 @@ const styles = StyleSheet.create({
     transition: .3,
   },
   buttonLabel: {
-    fontSize: 16,
+    fontFamily: 'Poppins_600SemiBold',
     fontWeight: '600',
+    fontSize: 16,
     color: '#FFFFFF',
     lineHeight: 22,
-    fontFamily: 'Poppins_600SemiBold',
+  },
+  checkboxLabel: {
+    fontFamily: 'Poppins_500Medium',
+    fontWeight: '500',
+    fontSize: 14,
+    lineHeight: 20,
+    color: "#AAAAAA"
   },
 });
 
