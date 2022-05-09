@@ -10,6 +10,7 @@ import {
 import { RootTabScreenProps } from '../types';
 import AppLogo from '../components/AppLogo';
 import LoginForm from '../components/LoginForm';
+import LoadingScreen from './LoadingScreen';
 
 const width = Dimensions.get('window').width;
 
@@ -22,9 +23,7 @@ export default function LoginScreen({ navigation }: RootTabScreenProps<'Login'>)
 
   if (!fontLoaded) {
     return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-      </View>
+      <LoadingScreen />
     );
   }
 

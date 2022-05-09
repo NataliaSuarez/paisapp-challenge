@@ -25,7 +25,6 @@ const width = Dimensions.get('window').width;
 
 const RegisterForm = () => {
   const navigation = useNavigation();
-  const { logIn }: any = useContext(AuthContext);
   const [modalVisible, setModalVisible] = useState(false);
   const initialState = {
     email: '',

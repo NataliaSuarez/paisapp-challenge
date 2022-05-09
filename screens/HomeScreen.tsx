@@ -1,5 +1,12 @@
 import { StyleSheet, ScrollView, StatusBar } from 'react-native';
 import { useState } from 'react';
+import {
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_600SemiBold,
+} from '@expo-google-fonts/poppins';
+import LoadingScreen from './LoadingScreen';
 import { View } from '../components/Themed';
 import CardList from '../components/CardList';
 import StatusHeader from '../components/StatusHeader';
@@ -10,6 +17,18 @@ export default function HomeScreen() {
 
   const [editing, setEditing] = useState(false);
   const [search, setSearch] = useState('');
+
+  const [fontLoaded, err] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_600SemiBold,
+  });
+
+  if (!fontLoaded) {
+    return (
+      <LoadingScreen stylesOverride={{ backgroundColor: "#F9FAFC" }} activityColor='#005CEE' />
+    );
+  }
 
   return (
     <View style={styles.container}>

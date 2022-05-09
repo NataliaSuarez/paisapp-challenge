@@ -1,11 +1,11 @@
-import React, { useState, createContext, useReducer, useMemo } from 'react';
+import React, { createContext, useReducer, useMemo } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-
 import { QueryClient, QueryClientProvider } from 'react-query';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import LoadingScreen from './screens/LoadingScreen';
 
 export const AuthContext = createContext({});
 const queryClient = new QueryClient();
@@ -49,20 +49,19 @@ export default function App() {
 
 
   if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <AuthContext.Provider value={authContext}>
-          <QueryClientProvider client={queryClient}>
-            <Navigation
-              colorScheme={colorScheme}
-              isLogged={state.isLogged}
-            />
-            <StatusBar />
-          </QueryClientProvider>
-        </AuthContext.Provider>
-      </SafeAreaProvider>
-    );
+    return (<LoadingScreen />)
   }
-}
+  return (
+    <SafeAreaProvider>
+      <AuthContext.Provider value={authContext}>
+        <QueryClientProvider client={queryClient}>
+          <Navigation
+            colorScheme={colorScheme}
+            isLogged={state.isLogged}
+          />
+          <StatusBar />
+        </QueryClientProvider>
+      </AuthContext.Provider>
+    </SafeAreaProvider>
+  );
+};

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 12,
-    color: "#AAAAAA",
+    color: '#334154',
     width: "100%"
   },
 });
