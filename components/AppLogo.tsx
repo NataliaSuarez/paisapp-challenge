@@ -2,12 +2,20 @@ import { StyleSheet, Text, View, StatusBar } from 'react-native';
 
 import PaisappLogo from './icons/PaisappLogo';
 
-const AppLogo = () => {
+type AppLogoProps = {
+  hasSubtitle?: boolean;
+};
+
+const AppLogo = ({ hasSubtitle = true }: AppLogoProps) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, !hasSubtitle && { flex: 0 }]}>
       <PaisappLogo style={styles.logo} />
       <Text style={styles.title}>Paisapp</Text>
-      <Text style={styles.subtitle}>Comienza a manejar tu vida financiera</Text>
+      {
+        hasSubtitle ?
+          <Text style={styles.subtitle}>Comienza a manejar tu vida financiera</Text>
+          : null
+      }
     </View>
   );
 };

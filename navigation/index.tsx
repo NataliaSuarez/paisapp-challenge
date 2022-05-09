@@ -124,6 +124,7 @@ function BottomTabNavigator() {
           component={LogoutScreen}
           options={{
             title: 'Logout',
+            tabBarStyle: { display: 'none' },
             tabBarIcon: ({ color }) => <LogoutLogo color={color} />,
           }}
         />

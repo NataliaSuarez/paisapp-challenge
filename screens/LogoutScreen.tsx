@@ -1,36 +1,33 @@
 import { useContext } from 'react';
-import { StyleSheet } from 'react-native';
-import { Pressable } from 'react-native';
+import { StyleSheet, StatusBar } from 'react-native';
+import { Dimensions } from 'react-native';
 
 import { AuthContext } from '../App';
 import { Text, View } from '../components/Themed';
+import BackHeader from '../components/BackHeader';
 import { RootTabScreenProps } from '../types';
-import useColorScheme from '../hooks/useColorScheme';
+import AppLogo from '../components/AppLogo';
+
+const width = Dimensions.get('window').width;
 
 
-export default function LogoutScreen({ navigation }: RootTabScreenProps<'Home'>) {
-  const colorScheme = useColorScheme();
-
+export default function LogoutScreen({ navigation }: RootTabScreenProps<'Logout'>) {
   const { logOut }: any = useContext(AuthContext);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Logout</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <Pressable
-        onPress={() => logOut()}
-        style={({ pressed }) => ({
-          opacity: pressed ? 0.5 : 1,
-        })}>
-        <Text>CERRAR SESION</Text>
-      </Pressable>
-      <Pressable
-        onPress={() => navigation.navigate('Modal')}
-        style={({ pressed }) => ({
-          opacity: pressed ? 0.5 : 1,
-        })}>
-        <Text>modal</Text>
-      </Pressable>
+      <View style={styles.backContainer}>
+        <BackHeader label="Volver" />
+      </View>
+      <View style={{ width: width, flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+        <AppLogo hasSubtitle={false} />
+        <Text style={styles.text}>Ya te vas?</Text>
+        <Text style={[styles.text, styles.link]}>
+          <Text>Volver a </Text>
+          <Text style={styles.link} onPress={() => navigation.goBack()}>mi cuenta</Text>
+        </Text>
+        <Text style={styles.logoutText} onPress={logOut}>Cerrar Sesión</Text>
+      </View>
     </View>
   );
 }
@@ -38,16 +35,34 @@ export default function LogoutScreen({ navigation }: RootTabScreenProps<'Home'>)
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-start',
+    paddingTop: StatusBar.currentHeight,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  backContainer: {
+    marginTop: 34,
+    zIndex: 100,
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
+  text: {
+    fontFamily: 'Poppins_500Medium',
+    fontSize: 24,
+    fontWeight: '500',
+    lineHeight: 32,
+    color: '#717E95',
+    marginBottom: 16,
   },
+  link: {
+    fontFamily: 'Poppins_500Medium',
+    fontWeight: '500',
+    fontSize: 18,
+    lineHeight: 24,
+    color: '#738ef1',
+    marginBottom: 30,
+  },
+  logoutText: {
+    fontFamily: 'Poppins_500Medium',
+    fontWeight: '500',
+    fontSize: 18,
+    lineHeight: 24,
+    color: '#005CEE'
+  }
 });
