@@ -1,5 +1,5 @@
 import { StyleSheet, ScrollView, StatusBar } from 'react-native';
-
+import { useState } from 'react';
 import { View } from '../components/Themed';
 import CardList from '../components/CardList';
 import StatusHeader from '../components/StatusHeader';
@@ -7,12 +7,24 @@ import ServiciosMenu from '../components/ServiciosMenu';
 import TransactionsList from '../components/TransactionsList';
 
 export default function HomeScreen() {
+
+  const [editing, setEditing] = useState(false);
+  const [search, setSearch] = useState('');
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.scrollContainer} showsHorizontalScrollIndicator={false} >
-        <StatusHeader />
-        <CardList />
-        <ServiciosMenu />
+        <StatusHeader
+          editing={editing}
+          setEditing={setEditing}
+          search={search}
+          setSearch={setSearch}
+        />
+        {!editing ?
+          <CardList />
+          : <View style={{ marginTop: 32 }}></View>
+        }
+        <ServiciosMenu search={search} />
         <TransactionsList />
       </ScrollView>
     </View>

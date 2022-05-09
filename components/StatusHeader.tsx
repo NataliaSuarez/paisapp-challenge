@@ -1,23 +1,49 @@
-import { StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
-import NotificationIcon from '../components/icons/NotificationIcon';
-import SearchIcon from '../components/icons/SearchIcon';
-import { Text, View } from '../components/Themed';
+import { View, Text } from '../components/Themed';
 import useUser from '../hooks/useUser';
+import TextField from './common/TextField';
+import NotificationIcon from './icons/NotificationIcon';
+import SearchIcon from './icons/SearchIcon';
 
-export default function StatusHeader() {
+type StatusHeaderProps = {
+  editing: boolean;
+  search: string;
+  setEditing: any;
+  setSearch: any;
+}
+
+export default function StatusHeader({ editing, setEditing, search, setSearch }: StatusHeaderProps) {
   const { data, isLoading } = useUser();
-
   return (
     <View style={styles.header}>
-      <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeText}>Hola</Text>
-        <Text style={styles.username}>{isLoading ? ' ' : data.name}</Text>
-      </View>
-      <View style={styles.actionsContainer}>
-        <SearchIcon color="#200E32" />
-        <NotificationIcon />
-      </View>
+      {editing ?
+        <TouchableWithoutFeedback onPress={() => setEditing(false)}>
+          <TextField
+            label=""
+            value={search}
+            placeholder="Buscar Servicios o Transacciones"
+            onChangeText={setSearch}
+            stylesOverride={{ borderRadius: '16' }}
+            autoFocus
+            onEndEditing={() => {
+              setEditing(false);
+              setSearch('');
+            }}
+          /></TouchableWithoutFeedback> :
+        (<>
+          <View style={styles.welcomeContainer}>
+            <Text style={styles.welcomeText}>Hola</Text>
+            <Text style={styles.username}>{isLoading ? ' ' : data.name}</Text>
+          </View>
+          <View style={styles.actionsContainer}>
+            <SearchIcon color="#200E32" handleClick={() => {
+              console.log('set search')
+              setEditing(true);
+            }} />
+            <NotificationIcon />
+          </View></>)}
     </View>
   );
 }
@@ -31,7 +57,8 @@ const styles = StyleSheet.create({
     height: 53,
     marginTop: 34,
     paddingHorizontal: 24,
-    backgroundColor: "#F9FAFC"
+    backgroundColor: "#F9FAFC",
+    transition: '5s'
   },
   welcomeContainer: {
     backgroundColor: "#F9FAFC"
