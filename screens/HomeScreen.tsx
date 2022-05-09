@@ -25,7 +25,7 @@ export default function HomeScreen() {
           : <View style={{ marginTop: 32 }}></View>
         }
         <ServiciosMenu search={search} />
-        <TransactionsList />
+        <TransactionsList search={search} />
       </ScrollView>
     </View>
   );
