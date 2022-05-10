@@ -1,19 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-import { Text, View } from '../../components/Themed';
-import ContactCard from './ContactCard';
-import { Contact } from '../../types';
+import { Text, View } from '../../components/Themed'
+import ContactCard from './ContactCard'
+import { Contact } from '../../types'
 
-type ContactsListProps = {
-  label: string;
-  contacts: Contact[];
-};
+interface ContactsListProps {
+  label: string
+  contacts: Contact[]
+}
 
-export default function ContactsList({ label, contacts }: ContactsListProps) {
+export default function ContactsList ({ label, contacts }: ContactsListProps) {
   return (
     <View>
       <Text style={styles.title}>{label}</Text>
-      <View style={styles.divider}></View>
+      <View style={styles.divider} />
       <View style={styles.list}>
         {contacts.map((contact: Contact, i: number) => {
           return (
@@ -22,7 +22,7 @@ export default function ContactsList({ label, contacts }: ContactsListProps) {
         })}
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -32,22 +32,22 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    color: "#AAAAAA",
-    marginBottom: 16,
+    color: '#AAAAAA',
+    marginBottom: 16
   },
   divider: {
     borderBottomColor: '#ACBAC3',
-    borderBottomWidth: .2,
-    width: '100%',
+    borderBottomWidth: 0.2,
+    width: '100%'
   },
   list: {
     paddingTop: 24,
     paddingBottom: 14,
-    paddingHorizontal: 24,
+    paddingHorizontal: 24
   },
   contactCard: {
     marginHorizontal: 24,
     marginBottom: 16,
-    backgroundColor: '#FFFFFF',
-  },
-});
+    backgroundColor: '#FFFFFF'
+  }
+})

@@ -1,51 +1,55 @@
-import { useState } from 'react';
-import { StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React from 'react'
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native'
 
-import { View, Text } from '../components/Themed';
-import useUser from '../hooks/useUser';
-import TextField from './common/TextField';
-import NotificationIcon from './icons/NotificationIcon';
-import SearchIcon from './icons/SearchIcon';
+import { View, Text } from '../components/Themed'
+import useUser from '../hooks/useUser'
+import TextField from './common/TextField'
+import NotificationIcon from './icons/NotificationIcon'
+import SearchIcon from './icons/SearchIcon'
 
-type StatusHeaderProps = {
-  editing: boolean;
-  search: string;
-  setEditing: any;
-  setSearch: any;
+interface StatusHeaderProps {
+  editing: boolean
+  search: string
+  setEditing: any
+  setSearch: any
 }
 
-export default function StatusHeader({ editing, setEditing, search, setSearch }: StatusHeaderProps) {
-  const { data, isLoading } = useUser();
+export default function StatusHeader ({ editing, setEditing, search, setSearch }: StatusHeaderProps): React.ReactElement {
+  const { data, isLoading } = useUser()
   return (
     <View style={styles.header}>
-      {editing ?
-        <TouchableWithoutFeedback onPress={() => setEditing(false)}>
+      {editing
+        ? <TouchableWithoutFeedback onPress={() => setEditing(false)}>
           <TextField
-            label=""
+            label=''
             value={search}
-            placeholder="Buscar Servicios o Transacciones"
+            placeholder='Buscar Servicios o Transacciones'
             onChangeText={setSearch}
             stylesOverride={{ borderRadius: '16' }}
             autoFocus
             onEndEditing={() => {
-              setEditing(false);
-              setSearch('');
+              setEditing(false)
+              setSearch('')
             }}
-          /></TouchableWithoutFeedback> :
-        (<>
+          />
+        </TouchableWithoutFeedback>
+        : (<>
           <View style={styles.welcomeContainer}>
             <Text style={styles.welcomeText}>Hola</Text>
             <Text style={styles.username}>{isLoading ? ' ' : data.name}</Text>
           </View>
           <View style={styles.actionsContainer}>
-            <SearchIcon color="#200E32" handleClick={() => {
-              console.log('set search')
-              setEditing(true);
-            }} />
+            <SearchIcon
+              color='#200E32' handleClick={() => {
+                console.log('set search')
+                setEditing(true)
+              }}
+            />
             <NotificationIcon />
-          </View></>)}
+          </View>
+        </>)}
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -57,29 +61,29 @@ const styles = StyleSheet.create({
     height: 53,
     marginTop: 34,
     paddingHorizontal: 24,
-    backgroundColor: "#F9FAFC",
+    backgroundColor: '#F9FAFC',
     transition: '5s'
   },
   welcomeContainer: {
-    backgroundColor: "#F9FAFC"
+    backgroundColor: '#F9FAFC'
   },
   welcomeText: {
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 30,
-    color: "#616E7C"
+    color: '#616E7C'
   },
   username: {
     fontFamily: 'Poppins_600SemiBold',
     fontWeight: '600',
     fontSize: 22,
-    color: "#334154"
+    color: '#334154'
   },
   actionsContainer: {
     display: 'flex',
     flexDirection: 'row',
     width: 57.15,
     justifyContent: 'space-between'
-  },
-});
+  }
+})

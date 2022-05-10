@@ -1,12 +1,13 @@
-import { useMutation } from 'react-query';
+import { useMutation } from 'react-query'
 
-const DELAY = 1500;
+const DELAY = 1500
 
 const postRegister = async (registerPayload) => {
   // TODO: Add POST call with payload
-  return new Promise(res => setTimeout(res, DELAY));
-};
+  // eslint-disable-next-line promise/param-names
+  return new Promise(res => setTimeout(res, DELAY))
+}
 
-const useRegister = (options) => useMutation(postRegister, { ...options});
+const useRegister = (options) => useMutation(postRegister, { ...options })
 
-export default useRegister;
+export default useRegister

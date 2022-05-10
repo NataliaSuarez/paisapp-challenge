@@ -1,15 +1,14 @@
-import { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { useMemo } from 'react'
+import { StyleSheet, ScrollView } from 'react-native'
 
-import { ScrollView } from 'react-native';
-import Card from './Card';
-import { View } from '../../components/Themed';
-import useUser from '../../hooks/useUser';
-import LoadingCard from './LoadingCard';
+import Card from './Card'
+import { View } from '../../components/Themed'
+import useUser from '../../hooks/useUser'
+import LoadingCard from './LoadingCard'
 import { Card as CardType } from '../../types'
 
-export default function CardList() {
-  const { data, isLoading } = useUser();
+export default function CardList(): React.ReactElement {
+  const { data, isLoading } = useUser()
 
   const cards = useMemo(() => isLoading ? [] : data.cards, [isLoading, data])
 
@@ -17,10 +16,9 @@ export default function CardList() {
     <View style={styles.cardsContainer}>
       <ScrollView horizontal style={styles.scrollContainer} showsHorizontalScrollIndicator={false}>
         {
-          isLoading ?
-            <LoadingCard />
-            :
-            cards.map((card: CardType, i: number) => {
+          isLoading
+            ? <LoadingCard />
+            : cards.map((card: CardType, i: number) => {
               return (
                 <Card
                   key={`${card.id}-${i}`}
@@ -35,18 +33,18 @@ export default function CardList() {
         }
       </ScrollView>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   scrollContainer: {
     width: '100%',
-    flex: 1,
+    flex: 1
   },
   cardsContainer: {
     width: '100%',
-    backgroundColor: "#F9FAFC",
+    backgroundColor: '#F9FAFC',
     height: 190,
-    marginVertical: 32,
-  },
-});
+    marginVertical: 32
+  }
+})

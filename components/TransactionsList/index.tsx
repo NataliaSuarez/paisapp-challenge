@@ -1,23 +1,25 @@
-import { useMemo } from 'react';
-import { StyleSheet } from 'react-native';
-import { Text, View } from '../../components/Themed';
-import TransactionsCard from './TransactionCard';
-import useTransactions from '../../hooks/useTransactions';
-import LoadingInfoCard from '../common/LoadingInfoCard';
-import { Transaction } from '../../types';
-import NotResultsText from '../common/NotResultsText';
+import { useMemo } from 'react'
+import { StyleSheet } from 'react-native'
+import { Text, View } from '../../components/Themed'
+import TransactionsCard from './TransactionCard'
+import useTransactions from '../../hooks/useTransactions'
+import LoadingInfoCard from '../common/LoadingInfoCard'
+import { Transaction } from '../../types'
+import NotResultsText from '../common/NotResultsText'
+import { UseQueryResult } from 'react-query'
 
-type TransactionsListProps = {
-  search: string;
+interface TransactionsListProps {
+  search: string
 }
 
-export default function TransactionsList({ search }: TransactionsListProps) {
-  const { data, isLoading } = useTransactions();
+export default function TransactionsList ({ search }: TransactionsListProps): React.ReactElement {
+  const { data, isLoading }: UseQueryResult = useTransactions()
   const transactions = useMemo(() =>
-    isLoading ? [] :
-      (data.filter(
-        (t: Transaction) => !search || `${t.title} ${t.description}`.toLowerCase().includes(search.toLocaleLowerCase().trim())
-      ) || []), [isLoading, data, search])
+    isLoading
+      ? []
+      : (data.filter(
+          (t: Transaction) => !search || `${t.title} ${t.description}`.toLowerCase().includes(search.toLocaleLowerCase().trim())
+        ) || []), [isLoading, data, search])
 
   return (
     <View style={styles.sectionContainer}>
@@ -25,10 +27,9 @@ export default function TransactionsList({ search }: TransactionsListProps) {
       <View style={styles.transactionsContainer}>
         {
           isLoading
-            ?
-            <LoadingInfoCard />
-            :
-            transactions.length === 0 ? (<NotResultsText label="Transacciones" />)
+            ? <LoadingInfoCard />
+            : transactions.length === 0
+              ? (<NotResultsText label='Transacciones' />)
               : transactions.map((transaction: Transaction, i: number) => {
                 return (
                   <TransactionsCard key={`${transaction.id}-${i}`} transaction={transaction} />
@@ -37,24 +38,24 @@ export default function TransactionsList({ search }: TransactionsListProps) {
         }
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    backgroundColor: "#F9FAFC",
-    paddingHorizontal: 24,
+    backgroundColor: '#F9FAFC',
+    paddingHorizontal: 24
   },
   sectionTitle: {
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 26,
-    color: "#334154",
-    marginBottom: 24,
+    color: '#334154',
+    marginBottom: 24
   },
   transactionsContainer: {
     width: '100%',
-    backgroundColor: "#F9FAFC",
-  },
-});
+    backgroundColor: '#F9FAFC'
+  }
+})

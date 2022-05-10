@@ -1,17 +1,17 @@
-import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native';
-import ShadowDefault from './Shadow';
+import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native'
+import ShadowDefault from './Shadow'
 
-type TextFieldProps = {
-  label: string;
-  placeholder: string;
-  onChangeText: any;
-  stylesOverride: any;
-  inputProps: object;
-  labelStyleOverride: any;
+interface TextFieldProps {
+  label: string
+  placeholder: string
+  onChangeText: any
+  stylesOverride: any
+  inputProps: object
+  labelStyleOverride: any
 }
 
-const paddingHorizontal = 24 * 2;
-const width = Dimensions.get('window').width - paddingHorizontal;
+const paddingHorizontal = 24 * 2
+const width = Dimensions.get('window').width - paddingHorizontal
 
 const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyleOverride, ...inputProps }: TextFieldProps) => {
   return (
@@ -28,21 +28,21 @@ const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyl
           {...inputProps}
         />
       </ShadowDefault>
-    </View >
-  );
-};
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   texfield: {
     width: '100%',
-    marginBottom: 24,
+    marginBottom: 24
   },
   label: {
     color: '#334154',
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     lineHeight: 22,
-    marginBottom: 16,
+    marginBottom: 16
   },
   input: {
     fontFamily: 'Poppins_400Regular',
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     padding: 16,
     height: 54,
     width: '100%',
-    borderRadius: 12,
-  },
-});
+    borderRadius: 12
+  }
+})
 
-export default TextField;
+export default TextField

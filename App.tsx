@@ -1,39 +1,39 @@
-import React, { createContext, useReducer, useMemo } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import useCachedResources from './hooks/useCachedResources';
-import useColorScheme from './hooks/useColorScheme';
-import Navigation from './navigation';
-import LoadingScreen from './screens/LoadingScreen';
+import React, { createContext, useReducer, useMemo } from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import useCachedResources from './hooks/useCachedResources'
+import useColorScheme from './hooks/useColorScheme'
+import Navigation from './navigation'
+import LoadingScreen from './screens/LoadingScreen'
 
-export const AuthContext = createContext({});
-const queryClient = new QueryClient();
+export const AuthContext = createContext({})
+const queryClient = new QueryClient()
 
-export default function App() {
-  const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+export default function App (): React.ReactElement {
+  const isLoadingComplete = useCachedResources()
+  const colorScheme = useColorScheme()
 
   const [state, dispatch] = useReducer(
-    (prevState: any, action: { type: any; }) => {
+    (prevState: any, action: { type: any }) => {
       switch (action.type) {
         case 'LOG_IN':
           return {
             ...prevState,
-            isLogged: true,
-          };
+            isLogged: true
+          }
         case 'LOG_OUT':
           return {
             ...prevState,
-            isLogged: false,
-          };
+            isLogged: false
+          }
       }
     },
     {
       isLoading: true,
-      isLogged: false,
+      isLogged: false
     }
-  );
+  )
 
   const authContext = useMemo(
     () => ({
@@ -42,11 +42,10 @@ export default function App() {
       },
       logOut: () => {
         dispatch({ type: 'LOG_OUT' })
-      },
+      }
     }),
     []
-  );
-
+  )
 
   if (!isLoadingComplete) {
     return (<LoadingScreen />)
@@ -63,5 +62,5 @@ export default function App() {
         </QueryClientProvider>
       </AuthContext.Provider>
     </SafeAreaProvider>
-  );
+  )
 };

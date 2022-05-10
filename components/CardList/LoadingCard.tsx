@@ -1,47 +1,44 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native'
 
-import { Dimensions } from 'react-native';
-import { Text, View } from '../Themed';
+import { Text, View } from '../Themed'
 
-const width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width
 
-
-export default function LoadingCard() {
-
+export default function LoadingCard () {
   return (
     <View style={[styles.defaultBackground, styles.container]}>
       <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
       <View style={[styles.defaultBackground, styles.balanceNumber]}>
-        <View style={[styles.symbol, styles.defaultTextColor]}></View>
-        <View style={[styles.balanceLoading, styles.defaultTextColor]}></View>
+        <View style={[styles.symbol, styles.defaultTextColor]} />
+        <View style={[styles.balanceLoading, styles.defaultTextColor]} />
       </View>
-      <View style={[styles.cardNumber, styles.defaultTextColor]}></View>
+      <View style={[styles.cardNumber, styles.defaultTextColor]} />
       <View style={[styles.defaultBackground, styles.cardInfo]}>
-        <Text style={[styles.regular, styles.username, styles.defaultTextColor]}></Text>
+        <Text style={[styles.regular, styles.username, styles.defaultTextColor]} />
         <View style={[styles.defaultBackground, styles.expDateContainer]}>
           <Text style={[styles.medium, styles.defaultTextColor, styles.expDateTitle]}>Exp. Date</Text>
-          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>{ }</Text>
+          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>{}</Text>
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   regular: {
     fontFamily: 'Poppins_400Regular',
-    fontWeight: "400",
+    fontWeight: '400'
   },
   medium: {
     fontFamily: 'Poppins_500Medium',
-    fontWeight: "500",
+    fontWeight: '500'
   },
   defaultBackground: {
-    backgroundColor: "#DBDBDB",
+    backgroundColor: '#DBDBDB'
   },
   defaultTextColor: {
-    color: "#AAAAAA",
-    opacity: .5,
+    color: '#AAAAAA',
+    opacity: 0.5
   },
   container: {
     flex: 1,
@@ -56,7 +53,7 @@ const styles = StyleSheet.create({
   balanceTitle: {
     fontSize: 14,
     lineHeight: 22,
-    marginBottom: 8,
+    marginBottom: 8
   },
   balanceNumber: {
     display: 'flex',
@@ -64,48 +61,48 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end'
   },
   balanceLoading: {
-    backgroundColor: "#AAAAAA",
+    backgroundColor: '#AAAAAA',
     width: 74,
     height: 26,
-    borderRadius: 12,
+    borderRadius: 12
   },
   symbol: {
     width: 48,
     height: 30,
     borderRadius: 6,
-    backgroundColor: "#AAAAAA",
-    marginRight: 9,
+    backgroundColor: '#AAAAAA',
+    marginRight: 9
   },
   cardNumber: {
-    backgroundColor: "#AAAAAA",
+    backgroundColor: '#AAAAAA',
     width: 218,
     height: 22,
     marginVertical: 24,
-    borderRadius: 12,
+    borderRadius: 12
   },
   username: {
-    backgroundColor: "#AAAAAA",
+    backgroundColor: '#AAAAAA',
     width: 141,
     height: 23,
-    borderRadius: 12,
+    borderRadius: 12
   },
   cardInfo: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between'
   },
   expDateContainer: {
-    alignItems: 'center',
+    alignItems: 'center'
   },
   expDateTitle: {
     fontSize: 10,
     lineHeight: 15
   },
   expDate: {
-    backgroundColor: "#AAAAAA",
+    backgroundColor: '#AAAAAA',
     width: 41,
     height: 13,
-    borderRadius: 12,
-  },
-});
+    borderRadius: 12
+  }
+})

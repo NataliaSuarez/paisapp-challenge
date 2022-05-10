@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from '../../components/Themed';
-import ShadowDefault from '../common/Shadow';
+import { StyleSheet } from 'react-native'
+import { Text, View } from '../../components/Themed'
+import ShadowDefault from '../common/Shadow'
 
-type ServicioItemProps = {
-  label: string;
-  backgroundColor: string;
-  Icon: any;
+interface ServicioItemProps {
+  label: string
+  backgroundColor: string
+  Icon: any
 }
 
-export default function ServicioItem({ label, backgroundColor, Icon }: ServicioItemProps) {
+export default function ServicioItem ({ label, backgroundColor, Icon }: ServicioItemProps) {
   return (
     <View style={styles.actionBoxContainer}>
       <ShadowDefault size={[70, 70]}>
@@ -18,15 +18,15 @@ export default function ServicioItem({ label, backgroundColor, Icon }: ServicioI
       </ShadowDefault>
       <Text style={styles.actionTitle}>{label}</Text>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   actionBoxContainer: {
-    backgroundColor: "#F9FAFC",
+    backgroundColor: '#F9FAFC',
     height: 108,
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   actionBox: {
     width: 70,
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    color: "#616E7C",
-  },
-});
+    color: '#616E7C'
+  }
+})

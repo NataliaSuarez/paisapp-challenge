@@ -1,25 +1,23 @@
-import { useContext } from 'react';
-import { StyleSheet, StatusBar } from 'react-native';
-import { Dimensions } from 'react-native';
+import { useContext } from 'react'
+import { StyleSheet, StatusBar, Dimensions } from 'react-native'
 
-import { AuthContext } from '../App';
-import { Text, View } from '../components/Themed';
-import BackHeader from '../components/BackHeader';
-import { RootTabScreenProps } from '../types';
-import AppLogo from '../components/AppLogo';
+import { AuthContext } from '../App'
+import { Text, View } from '../components/Themed'
+import BackHeader from '../components/BackHeader'
+import { RootTabScreenProps } from '../types'
+import AppLogo from '../components/AppLogo'
 
-const width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width
 
-
-export default function LogoutScreen({ navigation }: RootTabScreenProps<'Logout'>) {
-  const { logOut }: any = useContext(AuthContext);
+export default function LogoutScreen ({ navigation }: RootTabScreenProps<'Logout'>): React.ReactElement {
+  const { logOut }: any = useContext(AuthContext)
 
   return (
     <View style={styles.container}>
       <View style={styles.backContainer}>
-        <BackHeader label="Volver" />
+        <BackHeader label='Volver' />
       </View>
-      <View style={{ width: width, flex: 1, alignItems: 'center', justifyContent: 'center', }}>
+      <View style={{ width: width, flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <AppLogo hasSubtitle={false} />
         <Text style={styles.text}>Ya te vas?</Text>
         <Text style={[styles.text, styles.link]}>
@@ -29,18 +27,18 @@ export default function LogoutScreen({ navigation }: RootTabScreenProps<'Logout'
         <Text style={styles.logoutText} onPress={logOut}>Cerrar Sesión</Text>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    paddingTop: StatusBar.currentHeight,
+    paddingTop: StatusBar.currentHeight
   },
   backContainer: {
     marginTop: 34,
-    zIndex: 100,
+    zIndex: 100
   },
   text: {
     fontFamily: 'Poppins_500Medium',
@@ -48,7 +46,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 32,
     color: '#717E95',
-    marginBottom: 16,
+    marginBottom: 16
   },
   link: {
     fontFamily: 'Poppins_500Medium',
@@ -56,7 +54,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
     color: '#738ef1',
-    marginBottom: 30,
+    marginBottom: 30
   },
   logoutText: {
     fontFamily: 'Poppins_500Medium',
@@ -65,4 +63,4 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     color: '#005CEE'
   }
-});
+})

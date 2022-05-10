@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native';
-import { Text } from '../../components/Themed';
+import { StyleSheet } from 'react-native'
+import { Text } from '../../components/Themed'
 
-type NotResultsTextProps = {
-  label: string;
+interface NotResultsTextProps {
+  label: string
 }
 
-export default function NotResultsText({ label }: NotResultsTextProps) {
+export default function NotResultsText ({ label }: NotResultsTextProps) {
   return (
     <Text style={styles.notResults}>No se han encontrado {label}</Text>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,
-    lineHeight: 24,
+    lineHeight: 24
   }
-});
+})

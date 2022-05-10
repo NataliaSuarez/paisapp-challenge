@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 
-import PaisappLogo from './icons/PaisappLogo';
+import PaisappLogo from './icons/PaisappLogo'
 
-type AppLogoProps = {
-  hasSubtitle?: boolean;
-};
+interface AppLogoProps {
+  hasSubtitle?: boolean
+}
 
 const AppLogo = ({ hasSubtitle = true }: AppLogoProps) => {
   return (
@@ -12,13 +12,13 @@ const AppLogo = ({ hasSubtitle = true }: AppLogoProps) => {
       <PaisappLogo style={styles.logo} />
       <Text style={styles.title}>Paisapp</Text>
       {
-        hasSubtitle ?
-          <Text style={styles.subtitle}>Comienza a manejar tu vida financiera</Text>
+        hasSubtitle
+          ? <Text style={styles.subtitle}>Comienza a manejar tu vida financiera</Text>
           : null
       }
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: (StatusBar.currentHeight || 0) + 53,
-    marginBottom: 40,
+    marginBottom: 40
   },
   logo: { marginBottom: 12 },
   title: {
@@ -35,15 +35,15 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 40,
     lineHeight: 60,
-    marginBottom: 12,
+    marginBottom: 12
   },
   subtitle: {
     color: '#717E95',
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,
-    lineHeight: 24,
-  },
-});
+    lineHeight: 24
+  }
+})
 
-export default AppLogo;
+export default AppLogo

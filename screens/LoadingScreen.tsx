@@ -1,22 +1,21 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ActivityIndicator, Text, Dimensions } from 'react-native';
+import React from 'react'
+import { StatusBar } from 'expo-status-bar'
+import { StyleSheet, View, ActivityIndicator, Dimensions } from 'react-native'
 
-const width = Dimensions.get('window').width;
+const width = Dimensions.get('window').width
 
-type LoadingScreenProps = {
-  stylesOverride?: object;
-  activityColor?: string;
+interface LoadingScreenProps {
+  stylesOverride?: object
+  activityColor?: string
 }
 
-export default function LoadingScreen({ stylesOverride = {}, activityColor = "#FAFAFA" }: LoadingScreenProps) {
+export default function LoadingScreen ({ stylesOverride = {}, activityColor = '#FAFAFA' }: LoadingScreenProps): React.ReactElement {
   return (
     <View style={[styles.container, stylesOverride]}>
-      <ActivityIndicator size="large" color={activityColor} />
+      <ActivityIndicator size='large' color={activityColor} />
     </View>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -25,6 +24,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: width,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: '#005CEE',
-  },
-});
+    backgroundColor: '#005CEE'
+  }
+})

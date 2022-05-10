@@ -1,20 +1,18 @@
-import { StyleSheet } from 'react-native';
-import { View } from '../Themed';
+import { StyleSheet } from 'react-native'
+import { View } from '../Themed'
 
-
-export default function LoadingInfoCard() {
+export default function LoadingInfoCard () {
   return (
     <View style={styles.infoCard}>
       <View style={styles.leftData}>
-        <View style={[styles.actionBox]}>
-        </View>
+        <View style={[styles.actionBox]} />
         <View style={styles.info}>
-          <View style={styles.title}></View>
-          <View style={styles.description}></View>
+          <View style={styles.title} />
+          <View style={styles.description} />
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -27,11 +25,11 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: 16
   },
   leftData: {
     backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   actionBox: {
     height: 44,
@@ -41,23 +39,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#AAAAAA',
     borderRadius: 12,
     marginRight: 16,
-    opacity: .4,
+    opacity: 0.4
   },
   info: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF'
   },
   title: {
     backgroundColor: '#616E7C',
-    opacity: .3,
+    opacity: 0.3,
     width: 53,
     height: 22,
     marginBottom: 4,
-    borderRadius: 12,
+    borderRadius: 12
   },
   description: {
     color: '#AAAAAA',
     width: 82,
     height: 16,
-    borderRadius: 12,
-  },
-});
+    borderRadius: 12
+  }
+})

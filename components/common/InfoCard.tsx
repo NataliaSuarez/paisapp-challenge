@@ -1,20 +1,20 @@
-import { StyleSheet, Dimensions } from 'react-native';
-import { Text, View } from '../Themed';
-import ShadowDefault from './Shadow';
+import { StyleSheet, Dimensions } from 'react-native'
+import { Text, View } from '../Themed'
+import ShadowDefault from './Shadow'
 
-type InfoCardProps = {
-  Icon: any;
-  title: string;
-  description: string;
-  optional?: string;
-  backgroundColor: string;
-  color: string;
+interface InfoCardProps {
+  Icon: any
+  title: string
+  description: string
+  optional?: string
+  backgroundColor: string
+  color: string
 }
 
-const paddingHorizontal = 24 * 2;
-const width = Dimensions.get('window').width - paddingHorizontal;
+const paddingHorizontal = 24 * 2
+const width = Dimensions.get('window').width - paddingHorizontal
 
-export default function InfoCard({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
+export default function InfoCard ({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
   return (
     <View style={{ marginBottom: 16 }}>
       <ShadowDefault size={[width, 92]}>
@@ -28,13 +28,13 @@ export default function InfoCard({ Icon, title, description, optional, backgroun
               <Text style={styles.description}>{description}</Text>
             </View>
           </View>
-          {!!optional ?
-            <Text style={[styles.optional, { color: color }]}>{optional}</Text> : null
-          }
+          {optional
+            ? <Text style={[styles.optional, { color: color }]}>{optional}</Text>
+            : null}
         </View>
       </ShadowDefault>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: 16
   },
   leftData: {
     backgroundColor: '#FFFFFF',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   actionBox: {
     height: 44,
@@ -60,10 +60,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F3E4FF',
     borderRadius: 12,
-    marginRight: 16,
+    marginRight: 16
   },
   info: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#FFFFFF'
   },
   title: {
     color: '#616E7C',
@@ -71,20 +71,20 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    marginBottom: 4,
+    marginBottom: 4
   },
   description: {
     color: '#AAAAAA',
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,
-    lineHeight: 22,
+    lineHeight: 22
   },
   optional: {
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 14,
     lineHeight: 18,
-    alignSelf: 'center',
+    alignSelf: 'center'
   }
-});
+})

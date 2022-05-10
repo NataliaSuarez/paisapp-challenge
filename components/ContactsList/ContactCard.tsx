@@ -1,23 +1,23 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-import { Text } from '../../components/Themed';
-import InfoCard from '../common/InfoCard';
-import { Contact } from './index';
+import { Text } from '../../components/Themed'
+import InfoCard from '../common/InfoCard'
+import { Contact } from '../../types'
 
-type ContactCardProps = {
-  contact: Contact;
+interface ContactCardProps {
+  contact: Contact
 }
 
-export default function ContactCard({ contact }: ContactCardProps) {
+export default function ContactCard({ contact }: ContactCardProps): React.ReactElement {
   return (
     <InfoCard
       Icon={() => <Text style={styles.boxText}>{contact.name.charAt(0)}{contact.lastName.charAt(0)}</Text>}
       title={`${contact.name} ${contact.lastName}`}
       description={contact.phone}
-      backgroundColor="#CAF0FF"
-      color="#68C6E5"
+      backgroundColor='#CAF0FF'
+      color='#68C6E5'
     />
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -26,6 +26,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    color: '#68C6E5',
-  },
-});
+    color: '#68C6E5'
+  }
+})
