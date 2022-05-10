@@ -1,12 +1,12 @@
-import { StyleSheet, ScrollView, StatusBar, Dimensions } from 'react-native'
+import { StyleSheet, ScrollView, StatusBar, Dimensions, View } from 'react-native'
 import React, { useMemo, useState } from 'react'
 
 import BackHeader from '../components/BackHeader'
 import ContactsList from '../components/ContactsList'
+import Colors from '../constants/Colors'
 import SearchContacts from '../components/SearchContacts'
 import useContacts from '../hooks/useContacts'
 import LoadingContactsList from '../components/ContactsList/LoadingContactLists'
-import { View } from '../components/Themed'
 import { Contact } from '../types'
 
 const width = Dimensions.get('window').width
@@ -17,7 +17,7 @@ const recent = (a: Contact, b: Contact): number => {
   return 0
 }
 
-export default function ContactsScreen (): React.ReactElement {
+export default function ContactsScreen(): React.ReactElement {
   const { data, isLoading } = useContacts()
   const [search, setSearch] = useState('')
 
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     alignItems: 'flex-start',
-    backgroundColor: '#F9FAFC'
+    backgroundColor: Colors.default.mainBase
   },
   backContainer: {
     marginTop: 34,

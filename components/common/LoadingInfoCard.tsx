@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native'
-import { View } from '../Themed'
+import { StyleSheet, View } from 'react-native'
+import Colors from '../../constants/Colors'
 
-export default function LoadingInfoCard () {
+export default function LoadingInfoCard() {
   return (
     <View style={styles.infoCard}>
       <View style={styles.leftData}>
@@ -17,7 +17,7 @@ export default function LoadingInfoCard () {
 
 const styles = StyleSheet.create({
   infoCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     borderRadius: 16,
     height: 92,
     paddingVertical: 24,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   leftData: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     flexDirection: 'row'
   },
   actionBox: {
@@ -36,16 +36,16 @@ const styles = StyleSheet.create({
     width: 44,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     borderRadius: 12,
     marginRight: 16,
     opacity: 0.4
   },
   info: {
-    backgroundColor: '#FFFFFF'
+    backgroundColor: Colors.default.white
   },
   title: {
-    backgroundColor: '#616E7C',
+    backgroundColor: Colors.default.textSecondary,
     opacity: 0.3,
     width: 53,
     height: 22,
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 12
   },
   description: {
-    color: '#AAAAAA',
+    color: Colors.default.textBase,
     width: 82,
     height: 16,
     borderRadius: 12

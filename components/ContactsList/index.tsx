@@ -1,15 +1,15 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-import { Text, View } from '../../components/Themed'
 import ContactCard from './ContactCard'
 import { Contact } from '../../types'
+import Colors from '../../constants/Colors'
 
 interface ContactsListProps {
   label: string
   contacts: Contact[]
 }
 
-export default function ContactsList ({ label, contacts }: ContactsListProps) {
+export default function ContactsList({ label, contacts }: ContactsListProps) {
   return (
     <View>
       <Text style={styles.title}>{label}</Text>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    color: '#AAAAAA',
+    color: Colors.default.textBase,
     marginBottom: 16
   },
   divider: {
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   contactCard: {
     marginHorizontal: 24,
     marginBottom: 16,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: Colors.default.white
   }
 })

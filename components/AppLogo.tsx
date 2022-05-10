@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import Colors from '../constants/Colors'
 
 import PaisappLogo from './icons/PaisappLogo'
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
   },
   logo: { marginBottom: 12 },
   title: {
-    color: '#005CEE',
+    color: Colors.default.primary,
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 40,
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 12
   },
   subtitle: {
-    color: '#717E95',
+    color: '#717E95', // todo: add in colors as gray 600
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,

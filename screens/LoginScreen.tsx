@@ -10,10 +10,11 @@ import {
 import AppLogo from '../components/AppLogo'
 import LoginForm from '../components/LoginForm'
 import LoadingScreen from './LoadingScreen'
+import Colors from '../constants/Colors'
 
 const width = Dimensions.get('window').width
 
-export default function LoginScreen (): React.ReactElement {
+export default function LoginScreen(): React.ReactElement {
   const [fontLoaded] = useFonts({
     Poppins_400Regular,
     Poppins_500Medium,
@@ -38,7 +39,7 @@ export default function LoginScreen (): React.ReactElement {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     alignItems: 'center',
     width: width,
     padding: 24

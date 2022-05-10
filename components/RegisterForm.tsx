@@ -17,6 +17,7 @@ import useForm from '../hooks/useForm'
 import useRegister from '../hooks/useRegister'
 import ErrorModal from './common/ErrorModal'
 import { useNavigation } from '@react-navigation/native'
+import Colors from '../constants/Colors'
 
 const paddingHorizontal = 24 * 2
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal
@@ -57,7 +58,7 @@ const RegisterForm = (): React.ReactElement => {
               value={inputs.email}
               autoFocus
               onChangeText={subscribe('email')}
-              labelStyleOverride={{ color: '#FAFAFA' }}
+              labelStyleOverride={{ color: Colors.default.softWhite }}
             />
             <TextField
               label='Contraseña'
@@ -67,7 +68,7 @@ const RegisterForm = (): React.ReactElement => {
               stylesOverride={styles.passwordTextfield}
               value={inputs.password}
               onChangeText={subscribe('password')}
-              labelStyleOverride={{ color: '#FAFAFA' }}
+              labelStyleOverride={{ color: Colors.default.softWhite }}
             />
           </View>
         </TouchableWithoutFeedback>
@@ -84,7 +85,7 @@ const RegisterForm = (): React.ReactElement => {
           >
             <View style={[styles.button, ({ opacity: disabledInput ? 0.4 : 1 })]}>
               <Text style={styles.buttonLabel}>{isLoading
-                ? (<ActivityIndicator size='small' color='#FAFAFA' />)
+                ? (<ActivityIndicator size='small' color={Colors.default.softWhite} />)
                 : 'Crear cuenta'}
               </Text>
             </View>
@@ -122,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '400',
     lineHeight: 24,
-    color: '#F9FAFC',
+    color: Colors.default.mainBase,
     marginBottom: 30
   },
   link: {
@@ -130,13 +131,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 24,
-    color: '#738ef1',
+    color: Colors.default.accents.secondaryMain,
     marginBottom: 30
   },
   button: {
     width: '100%',
     padding: 19,
-    backgroundColor: '#738ef1',
+    backgroundColor: Colors.default.accents.secondaryMain,
     alignItems: 'center',
     borderRadius: 16,
     transition: 0.3
@@ -144,7 +145,7 @@ const styles = StyleSheet.create({
   buttonLabel: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#F9FAFC',
+    color: Colors.default.mainBase,
     lineHeight: 22,
     fontFamily: 'Poppins_600SemiBold'
   }

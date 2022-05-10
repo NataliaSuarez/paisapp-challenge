@@ -4,11 +4,12 @@
  *
  */
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
-import { ColorSchemeName, View } from 'react-native'
+import { View } from 'react-native'
 
+import Colors from '../constants/Colors'
 import HomeLogo from '../components/icons/HomeLogo'
 import ContactsLogo from '../components/icons/ContactsLogo'
 import LogoutLogo from '../components/icons/LogoutLogo'
@@ -19,19 +20,17 @@ import HomeScreen from '../screens/HomeScreen'
 import ContactsScreen from '../screens/ContactsScreen'
 import LogoutScreen from '../screens/LogoutScreen'
 import LoginScreen from '../screens/LoginScreen'
-import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types'
+import { RootStackParamList, RootTabParamList } from '../types'
 import LinkingConfiguration from './LinkingConfiguration'
 
 interface NavigationProps {
-  colorScheme: ColorSchemeName
   isLogged: boolean
 }
 
-export default function Navigation ({ colorScheme, isLogged }: NavigationProps): React.ReactElement {
+export default function Navigation({ isLogged }: NavigationProps): React.ReactElement {
   return (
     <NavigationContainer
       linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
     >
       {isLogged
         ? <RootNavigator />
@@ -42,7 +41,7 @@ export default function Navigation ({ colorScheme, isLogged }: NavigationProps):
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
 
-function OnBoardingNavigator (): React.ReactElement {
+function OnBoardingNavigator(): React.ReactElement {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -58,7 +57,7 @@ function OnBoardingNavigator (): React.ReactElement {
   )
 }
 
-function RootNavigator (): React.ReactElement {
+function RootNavigator(): React.ReactElement {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Root' component={BottomTabNavigator} options={{ headerShown: false }} />
@@ -72,20 +71,20 @@ function RootNavigator (): React.ReactElement {
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
-function BottomTabNavigator (): React.ReactElement {
+function BottomTabNavigator(): React.ReactElement {
   return (
-    <View style={{ flex: 1, backgroundColor: '#F9FAFC' }}>
+    <View style={{ flex: 1, backgroundColor: Colors.default.mainBase }}>
       <BottomTab.Navigator
         initialRouteName='Home'
         screenOptions={{
           headerShown: false,
-          tabBarActiveTintColor: '#6C8FF8', // Colors[colorScheme].tint,
-          tabBarInactiveTintColor: '#071529', // Colors[colorScheme].tint,
+          tabBarActiveTintColor: Colors.default.accents.secondaryMain,
+          tabBarInactiveTintColor: Colors.default.black,
           tabBarShowLabel: false,
           tabBarHideOnKeyboard: true,
           tabBarStyle: {
             height: 86,
-            backgroundColor: '#FFFFFF',
+            backgroundColor: Colors.default.white,
             borderTopRightRadius: 24,
             borderTopLeftRadius: 24,
             borderTopColor: 'transparent'
@@ -95,7 +94,7 @@ function BottomTabNavigator (): React.ReactElement {
         <BottomTab.Screen
           name='Home'
           component={HomeScreen}
-          options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+          options={() => ({
             title: 'Home piola',
             tabBarIcon: ({ color }) => <HomeLogo color={color} />
           })}

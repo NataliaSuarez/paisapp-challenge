@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
-import { StyleSheet } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { StyleSheet, Text, View } from 'react-native'
 import PagarIcon from '../icons/PagarIcon'
 import RecargarIcon from '../icons/RecargarIcon'
 import TransferIcon from '../icons/TransferIcon'
 import WalletIcon from '../icons/WalletIcon'
 import ServicioItem from './ServicioItem'
 import NotResultsText from '../common/NotResultsText'
+import Colors from '../../constants/Colors'
 
 interface ServicioComponent {
   label: string
@@ -53,7 +53,7 @@ export default function ServiciosMenu({ search }: ServiciosMenuProps): React.Rea
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     paddingHorizontal: 24
   },
   sectionTitle: {
@@ -61,13 +61,13 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 26,
-    color: '#334154',
+    color: Colors.default.textMain,
     marginBottom: 24
   },
   servicesContainer: {
     flexDirection: 'row',
     width: '100%',
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     justifyContent: 'flex-start',
     marginBottom: 32
   }

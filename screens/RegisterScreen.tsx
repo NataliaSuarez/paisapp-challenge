@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import RegisterForm from '../components/RegisterForm'
+import Colors from '../constants/Colors'
 
 const width = Dimensions.get('window').width
 
-export default function RegisterScreen (): React.ReactElement {
+export default function RegisterScreen(): React.ReactElement {
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, alignItems: 'center' }}>
@@ -22,7 +23,7 @@ export default function RegisterScreen (): React.ReactElement {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#005CEE',
+    backgroundColor: Colors.default.primary,
     alignItems: 'center',
     width: width,
     paddingTop: (StatusBar.currentHeight || 0) + 53,
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: 32,
     marginBottom: 24,
-    color: '#FFFFFF',
+    color: Colors.default.white,
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 22,
@@ -39,7 +40,7 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     marginBottom: 32,
-    color: '#AAAAAA',
+    color: Colors.default.textBase,
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,

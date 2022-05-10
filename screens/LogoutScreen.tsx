@@ -1,15 +1,15 @@
 import { useContext } from 'react'
-import { StyleSheet, StatusBar, Dimensions } from 'react-native'
+import { StyleSheet, StatusBar, Dimensions, Text, View } from 'react-native'
 
 import { AuthContext } from '../App'
-import { Text, View } from '../components/Themed'
 import BackHeader from '../components/BackHeader'
 import { RootTabScreenProps } from '../types'
 import AppLogo from '../components/AppLogo'
+import Colors from '../constants/Colors'
 
 const width = Dimensions.get('window').width
 
-export default function LogoutScreen ({ navigation }: RootTabScreenProps<'Logout'>): React.ReactElement {
+export default function LogoutScreen({ navigation }: RootTabScreenProps<'Logout'>): React.ReactElement {
   const { logOut }: any = useContext(AuthContext)
 
   return (
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'flex-start',
-    paddingTop: StatusBar.currentHeight
+    paddingTop: StatusBar.currentHeight,
+    backgroundColor: Colors.default.mainBase
   },
   backContainer: {
     marginTop: 34,
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: '500',
     lineHeight: 32,
-    color: '#717E95',
+    color: Colors.default.textSecondary,
     marginBottom: 16
   },
   link: {
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 18,
     lineHeight: 24,
-    color: '#738ef1',
+    color: Colors.default.accents.secondaryMain,
     marginBottom: 30
   },
   logoutText: {
@@ -61,6 +62,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 18,
     lineHeight: 24,
-    color: '#005CEE'
+    color: Colors.default.primary
   }
 })

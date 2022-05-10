@@ -1,11 +1,10 @@
-import { StyleSheet } from 'react-native'
-import { Text } from '../../components/Themed'
+import { StyleSheet, Text } from 'react-native'
 
 interface NotResultsTextProps {
   label: string
 }
 
-export default function NotResultsText ({ label }: NotResultsTextProps) {
+export default function NotResultsText({ label }: NotResultsTextProps) {
   return (
     <Text style={styles.notResults}>No se han encontrado {label}</Text>
   )

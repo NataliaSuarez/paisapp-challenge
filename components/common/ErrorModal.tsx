@@ -7,6 +7,7 @@ import {
   Modal
 } from 'react-native'
 import { Shadow } from 'react-native-shadow-2'
+import Colors from '../../constants/Colors'
 
 interface ErrorModalProps {
   modalVisible: boolean
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: widthWithouPadding,
     height: 92,
-    backgroundColor: '#FAFAFA',
+    backgroundColor: Colors.default.softWhite,
     borderRadius: 20,
     paddingTop: 24,
     paddingBottom: 26
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '500',
     lineHeight: 18,
-    color: '#616E7C',
+    color: Colors.default.textSecondary,
     marginBottom: 16
   },
   tryAgainDescription: {
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 24,
-    color: '#005CEE'
+    color: Colors.default.primary
   }
 })
 

@@ -1,14 +1,14 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
-import { Text, View } from '../components/Themed'
 import { useNavigation } from '@react-navigation/native'
 import BackIcon from './icons/BackIcon'
+import Colors from '../constants/Colors'
 
 interface BackHeaderProps {
   label: string
 }
 
-export default function BackHeader ({ label }: BackHeaderProps) {
+export default function BackHeader({ label }: BackHeaderProps) {
   const navigation = useNavigation()
 
   return (
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     height: 44,
     paddingBottom: 16,
     paddingHorizontal: 24,
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     position: 'absolute',
     top: 0
   },
@@ -40,6 +40,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_600SemiBold',
     fontWeight: '600',
     fontSize: 22,
-    color: '#334154'
+    color: Colors.default.textMain
   }
 })

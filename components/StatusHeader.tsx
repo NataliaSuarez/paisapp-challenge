@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import Colors from '../constants/Colors'
 
-import { View, Text } from '../components/Themed'
 import useUser from '../hooks/useUser'
 import TextField from './common/TextField'
 import NotificationIcon from './icons/NotificationIcon'
@@ -14,7 +14,7 @@ interface StatusHeaderProps {
   setSearch: any
 }
 
-export default function StatusHeader ({ editing, setEditing, search, setSearch }: StatusHeaderProps): React.ReactElement {
+export default function StatusHeader({ editing, setEditing, search, setSearch }: StatusHeaderProps): React.ReactElement {
   const { data, isLoading } = useUser()
   return (
     <View style={styles.header}>
@@ -40,10 +40,7 @@ export default function StatusHeader ({ editing, setEditing, search, setSearch }
           </View>
           <View style={styles.actionsContainer}>
             <SearchIcon
-              color='#200E32' handleClick={() => {
-                console.log('set search')
-                setEditing(true)
-              }}
+              color='#200E32' handleClick={() => setEditing(true)}
             />
             <NotificationIcon />
           </View>
@@ -61,24 +58,24 @@ const styles = StyleSheet.create({
     height: 53,
     marginTop: 34,
     paddingHorizontal: 24,
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     transition: '5s'
   },
   welcomeContainer: {
-    backgroundColor: '#F9FAFC'
+    backgroundColor: Colors.default.mainBase
   },
   welcomeText: {
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 30,
-    color: '#616E7C'
+    color: Colors.default.textSecondary
   },
   username: {
     fontFamily: 'Poppins_600SemiBold',
     fontWeight: '600',
     fontSize: 22,
-    color: '#334154'
+    color: Colors.default.textMain
   },
   actionsContainer: {
     display: 'flex',

@@ -1,6 +1,5 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Text } from 'react-native'
 
-import { Text } from '../../components/Themed'
 import InfoCard from '../common/InfoCard'
 import { Contact } from '../../types'
 

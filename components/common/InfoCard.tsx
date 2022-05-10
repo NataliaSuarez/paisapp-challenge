@@ -1,5 +1,5 @@
-import { StyleSheet, Dimensions } from 'react-native'
-import { Text, View } from '../Themed'
+import { StyleSheet, Dimensions, Text, View } from 'react-native'
+import Colors from '../../constants/Colors'
 import ShadowDefault from './Shadow'
 
 interface InfoCardProps {
@@ -14,7 +14,7 @@ interface InfoCardProps {
 const paddingHorizontal = 24 * 2
 const width = Dimensions.get('window').width - paddingHorizontal
 
-export default function InfoCard ({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
+export default function InfoCard({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
   return (
     <View style={{ marginBottom: 16 }}>
       <ShadowDefault size={[width, 92]}>
@@ -39,7 +39,7 @@ export default function InfoCard ({ Icon, title, description, optional, backgrou
 
 const styles = StyleSheet.create({
   contactCard: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     borderRadius: 16,
     height: 92,
     paddingVertical: 24,
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     marginBottom: 16
   },
   leftData: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     flexDirection: 'row'
   },
   actionBox: {
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
     marginRight: 16
   },
   info: {
-    backgroundColor: '#FFFFFF'
+    backgroundColor: Colors.default.white
   },
   title: {
-    color: '#616E7C',
+    color: Colors.default.textSecondary,
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 16,
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginBottom: 4
   },
   description: {
-    color: '#AAAAAA',
+    color: Colors.default.textBase,
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     fontSize: 16,

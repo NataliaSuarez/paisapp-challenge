@@ -1,4 +1,4 @@
-import { StyleSheet, ScrollView, StatusBar } from 'react-native'
+import { StyleSheet, ScrollView, StatusBar, View } from 'react-native'
 import { useState } from 'react'
 import {
   useFonts,
@@ -7,13 +7,13 @@ import {
   Poppins_600SemiBold
 } from '@expo-google-fonts/poppins'
 import LoadingScreen from './LoadingScreen'
-import { View } from '../components/Themed'
 import CardList from '../components/CardList'
 import StatusHeader from '../components/StatusHeader'
 import ServiciosMenu from '../components/ServiciosMenu'
 import TransactionsList from '../components/TransactionsList'
+import Colors from '../constants/Colors'
 
-export default function HomeScreen (): React.ReactElement {
+export default function HomeScreen(): React.ReactElement {
   const [editing, setEditing] = useState(false)
   const [search, setSearch] = useState('')
 
@@ -25,7 +25,7 @@ export default function HomeScreen (): React.ReactElement {
 
   if (!fontLoaded) {
     return (
-      <LoadingScreen stylesOverride={{ backgroundColor: '#F9FAFC' }} activityColor='#005CEE' />
+      <LoadingScreen stylesOverride={{ backgroundColor: Colors.default.mainBase }} activityColor={Colors.default.primary} />
     )
   }
 
@@ -53,14 +53,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: StatusBar.currentHeight,
     alignItems: 'flex-start',
-    backgroundColor: '#F9FAFC'
+    backgroundColor: Colors.default.mainBase
   },
   scrollContainer: {
     width: '100%',
     flex: 1
   },
   sectionContainer: {
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     paddingHorizontal: 24
   },
   sectionTitle: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 26,
-    color: '#334154',
+    color: Colors.default.textMain,
     marginBottom: 24
   }
 })

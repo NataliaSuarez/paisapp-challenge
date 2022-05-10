@@ -1,4 +1,5 @@
 import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native'
+import Colors from '../../constants/Colors'
 import ShadowDefault from './Shadow'
 
 interface TextFieldProps {
@@ -23,8 +24,8 @@ const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyl
           placeholder={placeholder}
           onChangeText={onChangeText}
           disableFullscreenUI
-          selectionColor='#AAAAAA'
-          placeholderTextColor='#AAAAAA'
+          selectionColor={Colors.default.textBase}
+          placeholderTextColor={Colors.default.textBase}
           {...inputProps}
         />
       </ShadowDefault>
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: 24
   },
   label: {
-    color: '#334154',
+    color: Colors.default.textMain,
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     lineHeight: 22,
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_400Regular',
     fontWeight: '400',
     lineHeight: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     padding: 16,
     height: 54,
     width: '100%',

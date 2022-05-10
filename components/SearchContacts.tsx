@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, TextInput, Dimensions } from 'react-native'
+import { StyleSheet, TextInput, Dimensions, View } from 'react-native'
 
 import SearchIcon from './icons/SearchIcon'
-import { View } from '../components/Themed'
 import ShadowDefault from './common/Shadow'
+import Colors from '../constants/Colors'
 
 interface SearchContactsProps {
   search: string
@@ -13,7 +13,7 @@ interface SearchContactsProps {
 const paddingHorizontal = 24 * 2
 const width = Dimensions.get('window').width - paddingHorizontal
 
-export default function SearchContacts ({ search, setSearch }: SearchContactsProps): React.ReactElement {
+export default function SearchContacts({ search, setSearch }: SearchContactsProps): React.ReactElement {
   return (
     <View style={{
       marginTop: 46,
@@ -23,13 +23,13 @@ export default function SearchContacts ({ search, setSearch }: SearchContactsPro
     >
       <ShadowDefault size={[width, 60]}>
         <View style={styles.container}>
-          <View style={styles.search}><SearchIcon color='#AAAAAA' /></View>
+          <View style={styles.search}><SearchIcon color={Colors.default.textBase} /></View>
           <TextInput
             style={styles.input}
             placeholder='Ingresa un nombre o un número'
             onChangeText={setSearch}
-            selectionColor='#AAAAAA'
-            placeholderTextColor='#AAAAAA'
+            selectionColor={Colors.default.textBase}
+            placeholderTextColor={Colors.default.textBase}
             value={search}
           />
         </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 21,
     alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    backgroundColor: Colors.default.white,
     borderRadius: 16
   },
   search: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_500Medium',
     fontWeight: '500',
     fontSize: 12,
-    color: '#334154',
+    color: Colors.default.textMain,
     width: '100%'
   }
 })

@@ -3,16 +3,14 @@ import { StatusBar } from 'expo-status-bar'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import useCachedResources from './hooks/useCachedResources'
-import useColorScheme from './hooks/useColorScheme'
 import Navigation from './navigation'
 import LoadingScreen from './screens/LoadingScreen'
 
 export const AuthContext = createContext({})
 const queryClient = new QueryClient()
 
-export default function App (): React.ReactElement {
+export default function App(): React.ReactElement {
   const isLoadingComplete = useCachedResources()
-  const colorScheme = useColorScheme()
 
   const [state, dispatch] = useReducer(
     (prevState: any, action: { type: any }) => {
@@ -55,7 +53,6 @@ export default function App (): React.ReactElement {
       <AuthContext.Provider value={authContext}>
         <QueryClientProvider client={queryClient}>
           <Navigation
-            colorScheme={colorScheme}
             isLogged={state.isLogged}
           />
           <StatusBar />

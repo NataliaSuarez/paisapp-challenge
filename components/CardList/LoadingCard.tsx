@@ -1,10 +1,9 @@
-import { StyleSheet, Dimensions } from 'react-native'
-
-import { Text, View } from '../Themed'
+import { StyleSheet, Dimensions, Text, View } from 'react-native'
+import Colors from '../../constants/Colors'
 
 const width = Dimensions.get('window').width
 
-export default function LoadingCard () {
+export default function LoadingCard() {
   return (
     <View style={[styles.defaultBackground, styles.container]}>
       <Text style={[styles.regular, styles.balanceTitle, styles.defaultTextColor]}>Balance</Text>
@@ -17,7 +16,7 @@ export default function LoadingCard () {
         <Text style={[styles.regular, styles.username, styles.defaultTextColor]} />
         <View style={[styles.defaultBackground, styles.expDateContainer]}>
           <Text style={[styles.medium, styles.defaultTextColor, styles.expDateTitle]}>Exp. Date</Text>
-          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>{}</Text>
+          <Text style={[styles.medium, styles.defaultTextColor, styles.expDate]}>{ }</Text>
         </View>
       </View>
     </View>
@@ -37,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DBDBDB'
   },
   defaultTextColor: {
-    color: '#AAAAAA',
+    color: Colors.default.textBase,
     opacity: 0.5
   },
   container: {
@@ -61,7 +60,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end'
   },
   balanceLoading: {
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     width: 74,
     height: 26,
     borderRadius: 12
@@ -70,18 +69,18 @@ const styles = StyleSheet.create({
     width: 48,
     height: 30,
     borderRadius: 6,
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     marginRight: 9
   },
   cardNumber: {
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     width: 218,
     height: 22,
     marginVertical: 24,
     borderRadius: 12
   },
   username: {
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     width: 141,
     height: 23,
     borderRadius: 12
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
     lineHeight: 15
   },
   expDate: {
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     width: 41,
     height: 13,
     borderRadius: 12

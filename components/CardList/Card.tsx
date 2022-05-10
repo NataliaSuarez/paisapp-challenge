@@ -1,7 +1,7 @@
-import { StyleSheet, Dimensions } from 'react-native'
+import { StyleSheet, Dimensions, Text, View } from 'react-native'
+import Colors from '../../constants/Colors'
 
 import CardLogo from '../icons/CardLogo'
-import { Text, View } from '../Themed'
 import { Card as CardType } from './index'
 
 const width = Dimensions.get('window').width
@@ -14,7 +14,7 @@ interface CardProps {
   userName: string
 }
 
-export default function Card ({ card, userName, styleOverride }: CardProps) {
+export default function Card({ card, userName, styleOverride }: CardProps) {
   return (
     <View style={[styles.defaultBackground, styles.container, styleOverride]}>
       <View style={[styles.defaultBackground, { flexDirection: 'row', alignContent: 'center', justifyContent: 'space-between' }]}>
@@ -49,10 +49,10 @@ const styles = StyleSheet.create({
     fontWeight: '500'
   },
   defaultBackground: {
-    backgroundColor: '#005CEE'
+    backgroundColor: Colors.default.primary
   },
   defaultTextColor: {
-    color: '#FFFFFF'
+    color: Colors.default.white
   },
   container: {
     flex: 1,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     width: 48,
     height: 30,
     borderRadius: 6,
-    backgroundColor: '#89A5FB', /// TODO: Change by linear-gradient
+    backgroundColor: Colors.default.accents.secondaryBase, /// TODO: Change by linear-gradient
     marginRight: 9,
     textAlign: 'center',
     textAlignVertical: 'center'

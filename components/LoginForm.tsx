@@ -19,6 +19,7 @@ import useForm from '../hooks/useForm'
 import useLogin from '../hooks/useLogin'
 import ErrorModal from './common/ErrorModal'
 import { useNavigation } from '@react-navigation/native'
+import Colors from '../constants/Colors'
 
 const paddingHorizontal = 24 * 2
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal
@@ -103,7 +104,7 @@ const LoginForm = (): React.ReactElement => {
           >
             <View style={[styles.button, ({ opacity: disabledInput ? 0.4 : 1 })]}>
               <Text style={styles.buttonLabel}>{isLoading
-                ? (<ActivityIndicator size='small' color='#FAFAFA' />)
+                ? (<ActivityIndicator size='small' color={Colors.default.softWhite} />)
                 : 'Ingresar'}
               </Text>
             </View>
@@ -141,16 +142,16 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
     lineHeight: 24,
-    color: '#616E7C',
+    color: Colors.default.textSecondary,
     marginBottom: 30
   },
   link: {
-    color: '#738ef1'
+    color: Colors.default.accents.secondaryMain
   },
   button: {
     width: '100%',
     padding: 19,
-    backgroundColor: '#005CEE',
+    backgroundColor: Colors.default.primary,
     alignItems: 'center',
     borderRadius: 16,
     transition: 0.3
@@ -159,7 +160,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins_600SemiBold',
     fontWeight: '600',
     fontSize: 16,
-    color: '#FFFFFF',
+    color: Colors.default.white,
     lineHeight: 22
   },
   checkboxLabel: {
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 14,
     lineHeight: 20,
-    color: '#AAAAAA'
+    color: Colors.default.textBase
   }
 })
 

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { StyleSheet, Text, View } from 'react-native'
+import Colors from '../../constants/Colors'
 import ShadowDefault from '../common/Shadow'
 
 interface ServicioItemProps {
@@ -8,7 +8,7 @@ interface ServicioItemProps {
   Icon: any
 }
 
-export default function ServicioItem ({ label, backgroundColor, Icon }: ServicioItemProps) {
+export default function ServicioItem({ label, backgroundColor, Icon }: ServicioItemProps) {
   return (
     <View style={styles.actionBoxContainer}>
       <ShadowDefault size={[70, 70]}>
@@ -23,7 +23,7 @@ export default function ServicioItem ({ label, backgroundColor, Icon }: Servicio
 
 const styles = StyleSheet.create({
   actionBoxContainer: {
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     height: 108,
     justifyContent: 'space-between',
     alignItems: 'center'
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 22,
-    color: '#616E7C'
+    color: Colors.default.textSecondary
   }
 })

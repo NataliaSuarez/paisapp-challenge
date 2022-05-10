@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import Colors from '../../constants/Colors'
 
-import { View } from '../Themed'
 import LoadingInfoCard from '../common/LoadingInfoCard'
 
 export default function LoadingContactsList(): React.ReactElement {
@@ -19,7 +19,7 @@ export default function LoadingContactsList(): React.ReactElement {
 const styles = StyleSheet.create({
   title: {
     marginHorizontal: 24,
-    backgroundColor: '#AAAAAA',
+    backgroundColor: Colors.default.textBase,
     marginBottom: 16,
     height: 22,
     width: 65,
@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
   contactCard: {
     marginHorizontal: 24,
     marginBottom: 16,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: Colors.default.white
   }
 })

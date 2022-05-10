@@ -2,6 +2,7 @@ import React from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { StyleSheet, View, ActivityIndicator, Dimensions } from 'react-native'
 
+import Colors from '../constants/Colors'
 const width = Dimensions.get('window').width
 
 interface LoadingScreenProps {
@@ -9,7 +10,7 @@ interface LoadingScreenProps {
   activityColor?: string
 }
 
-export default function LoadingScreen ({ stylesOverride = {}, activityColor = '#FAFAFA' }: LoadingScreenProps): React.ReactElement {
+export default function LoadingScreen({ stylesOverride = {}, activityColor = Colors.default.softWhite }: LoadingScreenProps): React.ReactElement {
   return (
     <View style={[styles.container, stylesOverride]}>
       <ActivityIndicator size='large' color={activityColor} />
@@ -24,6 +25,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: width,
     paddingTop: StatusBar.currentHeight,
-    backgroundColor: '#005CEE'
+    backgroundColor: Colors.default.primary
   }
 })

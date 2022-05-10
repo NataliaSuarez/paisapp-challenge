@@ -1,25 +1,25 @@
 import { useMemo } from 'react'
-import { StyleSheet } from 'react-native'
-import { Text, View } from '../../components/Themed'
+import { StyleSheet, Text, View } from 'react-native'
 import TransactionsCard from './TransactionCard'
 import useTransactions from '../../hooks/useTransactions'
 import LoadingInfoCard from '../common/LoadingInfoCard'
 import { Transaction } from '../../types'
 import NotResultsText from '../common/NotResultsText'
 import { UseQueryResult } from 'react-query'
+import Colors from '../../constants/Colors'
 
 interface TransactionsListProps {
   search: string
 }
 
-export default function TransactionsList ({ search }: TransactionsListProps): React.ReactElement {
+export default function TransactionsList({ search }: TransactionsListProps): React.ReactElement {
   const { data, isLoading }: UseQueryResult = useTransactions()
   const transactions = useMemo(() =>
     isLoading
       ? []
       : (data.filter(
-          (t: Transaction) => !search || `${t.title} ${t.description}`.toLowerCase().includes(search.toLocaleLowerCase().trim())
-        ) || []), [isLoading, data, search])
+        (t: Transaction) => !search || `${t.title} ${t.description}`.toLowerCase().includes(search.toLocaleLowerCase().trim())
+      ) || []), [isLoading, data, search])
 
   return (
     <View style={styles.sectionContainer}>
@@ -43,7 +43,7 @@ export default function TransactionsList ({ search }: TransactionsListProps): Re
 
 const styles = StyleSheet.create({
   sectionContainer: {
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     paddingHorizontal: 24
   },
   sectionTitle: {
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 20,
     lineHeight: 26,
-    color: '#334154',
+    color: Colors.default.textMain,
     marginBottom: 24
   },
   transactionsContainer: {
     width: '100%',
-    backgroundColor: '#F9FAFC'
+    backgroundColor: Colors.default.mainBase
   }
 })

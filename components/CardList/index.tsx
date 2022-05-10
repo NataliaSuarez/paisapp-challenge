@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react'
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, View } from 'react-native'
 
 import Card from './Card'
-import { View } from '../../components/Themed'
 import useUser from '../../hooks/useUser'
 import LoadingCard from './LoadingCard'
 import { Card as CardType } from '../../types'
+import Colors from '../../constants/Colors'
 
 export default function CardList(): React.ReactElement {
   const { data, isLoading } = useUser()
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   },
   cardsContainer: {
     width: '100%',
-    backgroundColor: '#F9FAFC',
+    backgroundColor: Colors.default.mainBase,
     height: 190,
     marginVertical: 32
   }
