@@ -1,7 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet, TouchableWithoutFeedback } from 'react-native'
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from 'react-native'
 import Colors from '../constants/Colors'
-
 import useUser from '../hooks/useUser'
 import TextField from './common/TextField'
 import NotificationIcon from './icons/NotificationIcon'
@@ -14,12 +13,12 @@ interface StatusHeaderProps {
   setSearch: any
 }
 
-export default function StatusHeader({ editing, setEditing, search, setSearch }: StatusHeaderProps): React.ReactElement {
+export default function StatusHeader ({ editing, setEditing, search, setSearch }: StatusHeaderProps): React.ReactElement {
   const { data, isLoading } = useUser()
   return (
     <View style={styles.header}>
-      {editing
-        ? <TouchableWithoutFeedback onPress={() => setEditing(false)}>
+      {editing ?
+        <TouchableWithoutFeedback onPress={() => setEditing(false)}>
           <TextField
             label=''
             value={search}
@@ -44,7 +43,7 @@ export default function StatusHeader({ editing, setEditing, search, setSearch }:
             />
             <NotificationIcon />
           </View>
-        </>)}
+          </>)}
     </View>
   )
 }

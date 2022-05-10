@@ -1,13 +1,13 @@
+import { Transaction, TransactionType } from '../../types'
 import InfoCard from '../common/InfoCard'
 import DebitIcon from '../icons/DebitIcon'
 import PaymentIcon from '../icons/PaymentIcon'
-import { Transaction, TransactionType } from '../../types'
 
 interface TransactionCardProp {
   transaction: Transaction
 }
 
-export default function TransactionsCard ({ transaction }: TransactionCardProp) {
+export default function TransactionsCard ({ transaction }: TransactionCardProp): React.ReactElement {
   return (
     <InfoCard
       Icon={transaction.type === TransactionType.Debit ? DebitIcon : PaymentIcon}

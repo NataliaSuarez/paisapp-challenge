@@ -4,7 +4,7 @@ interface NotResultsTextProps {
   label: string
 }
 
-export default function NotResultsText({ label }: NotResultsTextProps) {
+export default function NotResultsText ({ label }: NotResultsTextProps): React.ReactElement {
   return (
     <Text style={styles.notResults}>No se han encontrado {label}</Text>
   )

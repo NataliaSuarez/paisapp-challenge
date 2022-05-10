@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import Colors from '../../constants/Colors'
 import ShadowDefault from './Shadow'
 
@@ -14,7 +14,7 @@ interface InfoCardProps {
 const paddingHorizontal = 24 * 2
 const width = Dimensions.get('window').width - paddingHorizontal
 
-export default function InfoCard({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps) {
+export default function InfoCard ({ Icon, title, description, optional, backgroundColor, color }: InfoCardProps): React.ReactElement {
   return (
     <View style={{ marginBottom: 16 }}>
       <ShadowDefault size={[width, 92]}>
@@ -28,7 +28,7 @@ export default function InfoCard({ Icon, title, description, optional, backgroun
               <Text style={styles.description}>{description}</Text>
             </View>
           </View>
-          {optional
+          {(optional != null)
             ? <Text style={[styles.optional, { color: color }]}>{optional}</Text>
             : null}
         </View>

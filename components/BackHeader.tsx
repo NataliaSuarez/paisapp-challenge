@@ -1,14 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
-
 import { useNavigation } from '@react-navigation/native'
-import BackIcon from './icons/BackIcon'
+import { StyleSheet, Text, View } from 'react-native'
 import Colors from '../constants/Colors'
+import BackIcon from './icons/BackIcon'
 
 interface BackHeaderProps {
   label: string
 }
 
-export default function BackHeader({ label }: BackHeaderProps) {
+export default function BackHeader ({ label }: BackHeaderProps): React.ReactElement {
   const navigation = useNavigation()
 
   return (

@@ -18,7 +18,7 @@ const paddingHorizontal = 24 * 2
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal
 const width = Dimensions.get('window').width
 
-const ErrorModal = ({ modalVisible, setModalVisible }: ErrorModalProps) => {
+const ErrorModal = ({ modalVisible, setModalVisible }: ErrorModalProps): React.ReactElement => {
   return (
     <Modal
       animationType='fade'

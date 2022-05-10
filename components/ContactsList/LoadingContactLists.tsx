@@ -1,9 +1,8 @@
 import { StyleSheet, View } from 'react-native'
 import Colors from '../../constants/Colors'
-
 import LoadingInfoCard from '../common/LoadingInfoCard'
 
-export default function LoadingContactsList(): React.ReactElement {
+export default function LoadingContactsList (): React.ReactElement {
   return (
     <View>
       <View style={styles.title} />

@@ -1,13 +1,12 @@
 import { StyleSheet, Text } from 'react-native'
-
-import InfoCard from '../common/InfoCard'
 import { Contact } from '../../types'
+import InfoCard from '../common/InfoCard'
 
 interface ContactCardProps {
   contact: Contact
 }
 
-export default function ContactCard({ contact }: ContactCardProps): React.ReactElement {
+export default function ContactCard ({ contact }: ContactCardProps): React.ReactElement {
   return (
     <InfoCard
       Icon={() => <Text style={styles.boxText}>{contact.name.charAt(0)}{contact.lastName.charAt(0)}</Text>}

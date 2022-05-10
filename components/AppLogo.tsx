@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View, StatusBar } from 'react-native'
+import React from 'react'
+import { StatusBar, StyleSheet, Text, View } from 'react-native'
 import Colors from '../constants/Colors'
-
 import PaisappLogo from './icons/PaisappLogo'
 
 interface AppLogoProps {
   hasSubtitle?: boolean
 }
 
-const AppLogo = ({ hasSubtitle = true }: AppLogoProps) => {
+const AppLogo = ({ hasSubtitle = true }: AppLogoProps): React.ReactElement => {
   return (
     <View style={[styles.container, !hasSubtitle && { flex: 0 }]}>
       <PaisappLogo style={styles.logo} />

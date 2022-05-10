@@ -1,18 +1,18 @@
 import { useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import TransactionsCard from './TransactionCard'
-import useTransactions from '../../hooks/useTransactions'
-import LoadingInfoCard from '../common/LoadingInfoCard'
-import { Transaction } from '../../types'
-import NotResultsText from '../common/NotResultsText'
 import { UseQueryResult } from 'react-query'
 import Colors from '../../constants/Colors'
+import useTransactions from '../../hooks/useTransactions'
+import { Transaction } from '../../types'
+import LoadingInfoCard from '../common/LoadingInfoCard'
+import NotResultsText from '../common/NotResultsText'
+import TransactionsCard from './TransactionCard'
 
 interface TransactionsListProps {
   search: string
 }
 
-export default function TransactionsList({ search }: TransactionsListProps): React.ReactElement {
+export default function TransactionsList ({ search }: TransactionsListProps): React.ReactElement {
   const { data, isLoading }: UseQueryResult = useTransactions()
   const transactions = useMemo(() =>
     isLoading

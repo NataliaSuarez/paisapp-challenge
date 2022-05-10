@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import Colors from '../../constants/Colors'
+import NotResultsText from '../common/NotResultsText'
 import PagarIcon from '../icons/PagarIcon'
 import RecargarIcon from '../icons/RecargarIcon'
 import TransferIcon from '../icons/TransferIcon'
 import WalletIcon from '../icons/WalletIcon'
 import ServicioItem from './ServicioItem'
-import NotResultsText from '../common/NotResultsText'
-import Colors from '../../constants/Colors'
 
 interface ServicioComponent {
   label: string
@@ -25,13 +25,14 @@ interface ServiciosMenuProps {
   search: string
 }
 
-export default function ServiciosMenu({ search }: ServiciosMenuProps): React.ReactElement {
+export default function ServiciosMenu ({ search }: ServiciosMenuProps): React.ReactElement {
   const filteredServ = useMemo(() => {
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
     return servicios.filter((s) => !search || s.label.toLocaleLowerCase().includes(search.toLocaleLowerCase().trim())) || []
   }, [servicios, search])
 
   return (
+    // TODO: Refactor -> make SectionContainer Component with container styles and title
     <View style={styles.sectionContainer}>
       <Text style={styles.sectionTitle}>Servicios</Text>
       <View style={styles.servicesContainer}>

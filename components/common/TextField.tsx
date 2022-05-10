@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, Dimensions } from 'react-native'
+import { Dimensions, StyleSheet, Text, TextInput, View } from 'react-native'
 import Colors from '../../constants/Colors'
 import ShadowDefault from './Shadow'
 
@@ -14,7 +14,7 @@ interface TextFieldProps {
 const paddingHorizontal = 24 * 2
 const width = Dimensions.get('window').width - paddingHorizontal
 
-const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyleOverride, ...inputProps }: TextFieldProps) => {
+const TextField = ({ label, placeholder, onChangeText, stylesOverride, labelStyleOverride, ...inputProps }: TextFieldProps): React.ReactElement => {
   return (
     <View style={[styles.texfield, stylesOverride]}>
       <Text style={[styles.label, labelStyleOverride]}>{label}</Text>

@@ -8,7 +8,7 @@ interface ServicioItemProps {
   Icon: any
 }
 
-export default function ServicioItem({ label, backgroundColor, Icon }: ServicioItemProps) {
+export default function ServicioItem ({ label, backgroundColor, Icon }: ServicioItemProps): React.ReactElement {
   return (
     <View style={styles.actionBoxContainer}>
       <ShadowDefault size={[70, 70]}>

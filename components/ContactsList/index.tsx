@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
-
-import ContactCard from './ContactCard'
-import { Contact } from '../../types'
 import Colors from '../../constants/Colors'
+import { Contact } from '../../types'
+import ContactCard from './ContactCard'
 
 interface ContactsListProps {
   label: string
   contacts: Contact[]
 }
 
-export default function ContactsList({ label, contacts }: ContactsListProps) {
+export default function ContactsList ({ label, contacts }: ContactsListProps): React.ReactElement {
   return (
     <View>
       <Text style={styles.title}>{label}</Text>

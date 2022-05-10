@@ -1,7 +1,7 @@
 import { StyleSheet, View } from 'react-native'
 import Colors from '../../constants/Colors'
 
-export default function LoadingInfoCard() {
+export default function LoadingInfoCard (): React.ReactElement {
   return (
     <View style={styles.infoCard}>
       <View style={styles.leftData}>

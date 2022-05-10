@@ -1,12 +1,11 @@
-import { StyleSheet, Dimensions, Text, View } from 'react-native'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import Colors from '../../constants/Colors'
-
 import CardLogo from '../icons/CardLogo'
 import { Card as CardType } from './index'
 
 const width = Dimensions.get('window').width
 
-const encriptCardNumber = (cardNumber: string) => `**** **** **** ${cardNumber.split(' ')[3]}`
+const encriptCardNumber = (cardNumber: string): string => `**** **** **** ${cardNumber.split(' ')[3]}`
 
 interface CardProps {
   card: CardType
@@ -14,8 +13,9 @@ interface CardProps {
   userName: string
 }
 
-export default function Card({ card, userName, styleOverride }: CardProps) {
+export default function Card ({ card, userName, styleOverride }: CardProps): React.ReactElement {
   return (
+    // TODO: Refactor: simplify styles and merge with Loading Card
     <View style={[styles.defaultBackground, styles.container, styleOverride]}>
       <View style={[styles.defaultBackground, { flexDirection: 'row', alignContent: 'center', justifyContent: 'space-between' }]}>
         <View style={[styles.defaultBackground, { flexDirection: 'column' }]}>

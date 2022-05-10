@@ -1,29 +1,23 @@
+import { useNavigation } from '@react-navigation/native'
 import { useContext, useState } from 'react'
-import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableNativeFeedback,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Dimensions,
-  ActivityIndicator
+  ActivityIndicator, Dimensions, Keyboard, KeyboardAvoidingView,
+  Platform, StyleSheet,
+  Text, TouchableNativeFeedback, TouchableWithoutFeedback, View
 } from 'react-native'
+import BouncyCheckbox from 'react-native-bouncy-checkbox'
 import { AuthContext } from '../App'
-import TextField from './common/TextField'
-import ShadowDefault from './common/Shadow'
+import Colors from '../constants/Colors'
 import useForm from '../hooks/useForm'
 import useLogin from '../hooks/useLogin'
 import ErrorModal from './common/ErrorModal'
-import { useNavigation } from '@react-navigation/native'
-import Colors from '../constants/Colors'
+import ShadowDefault from './common/Shadow'
+import TextField from './common/TextField'
 
 const paddingHorizontal = 24 * 2
 const widthWithouPadding = Dimensions.get('window').width - paddingHorizontal
 
+// TODO: Refactor: merge with Register Form
 const LoginForm = (): React.ReactElement => {
   const navigation = useNavigation()
   const { logIn }: any = useContext(AuthContext)

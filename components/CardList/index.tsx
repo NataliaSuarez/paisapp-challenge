@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react'
-import { StyleSheet, ScrollView, View } from 'react-native'
-
-import Card from './Card'
-import useUser from '../../hooks/useUser'
-import LoadingCard from './LoadingCard'
-import { Card as CardType } from '../../types'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import { UseQueryResult } from 'react-query'
 import Colors from '../../constants/Colors'
+import useUser from '../../hooks/useUser'
+import { Card as CardType } from '../../types'
+import Card from './Card'
+import LoadingCard from './LoadingCard'
 
-export default function CardList(): React.ReactElement {
-  const { data, isLoading } = useUser()
+export default function CardList (): React.ReactElement {
+  const { data, isLoading }: UseQueryResult = useUser()
 
   const cards = useMemo(() => isLoading ? [] : data.cards, [isLoading, data])
 
